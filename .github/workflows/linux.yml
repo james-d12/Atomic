@@ -32,7 +32,7 @@ jobs:
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/
       shell: bash 
-      run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/atomic.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/atomic/ > clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/atomic.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ > clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build
