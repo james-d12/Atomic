@@ -1,0 +1,49 @@
+name: Macintosh
+
+on: [push]
+
+jobs:
+  macos-latest:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        compiler: [ c++, g++ ]
+        standard: [ c++17, c++2a ]
+        mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: brew install cmake cppcheck
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Build 
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+
+    - name: Run Tests
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: ${{runner.workspace}}/build/Tests > test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+
+    - name: Run CppCheck
+      working-directory: ${{runner.workspace}}/
+      shell: bash
+      run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+
+    - name: 'Upload Test Logs'
+      uses: actions/upload-artifact@v2
+      with:
+            name: logs-macintosh
+            path: ${{runner.workspace}}/build/test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+            retention-days: 1
+
+    - name: 'Upload CppCheck Logs'
+      uses: actions/upload-artifact@v2
+      with:
+            name: logs-macintosh
+            path: ${{runner.workspace}}/cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+            retention-days: 1
