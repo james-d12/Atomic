@@ -27,19 +27,12 @@ jobs:
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: ${{runner.workspace}}/build/Tests > test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: ${{runner.workspace}}/build/Tests 
 
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/
       shell: bash
       run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
-    - name: 'Upload Test Logs'
-      uses: actions/upload-artifact@v2
-      with:
-            name: logs-macintosh
-            path: ${{runner.workspace}}/build/test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-            retention-days: 1
 
     - name: 'Upload CppCheck Logs'
       uses: actions/upload-artifact@v2
