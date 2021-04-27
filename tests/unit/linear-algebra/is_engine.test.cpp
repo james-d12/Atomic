@@ -14,6 +14,6 @@ TEST_CASE("is_engine_resizable detects invalid types.", "[trait]") {
 }
 
 TEST_CASE("is_engine_resizable detects valid types.", "[trait]") {
-    REQUIRE_FALSE(atomic::linalg::is_engine_resizable<atomic::linalg::dynamic_vector_engine<int>>::value);
+    REQUIRE(atomic::linalg::is_engine_resizable<atomic::linalg::dynamic_vector_engine<int>>::value);
 }
 
