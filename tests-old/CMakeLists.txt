@@ -1,0 +1,6 @@
+add_executable(Tests-Old ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
+target_include_directories(Tests INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/tests-old/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/tests/)
+SetProjectWarnings(Tests-Old)
+SetBuildTypeOptions(Tests-Old)
+SetProjectProperties(Tests-Old ${PROJECT_STANDARD})

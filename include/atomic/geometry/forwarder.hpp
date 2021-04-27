@@ -17,10 +17,10 @@ template<typename T, std::size_t D>
 struct line_segment;
 
 template<typename T>
-struct circle;
+class circle;
 
 template<typename T>
-struct triangle;
+class triangle;
 
 }} // atomic::geometry namespace
 

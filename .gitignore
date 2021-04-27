@@ -1,0 +1,9 @@
+out/
+.vs/
+bin/
+[bB]uild/
+[cC]MakeFiles/
+
+CMakeCache.txt
+CMakeSettings.json
+*.hint
