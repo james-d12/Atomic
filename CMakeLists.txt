@@ -47,5 +47,5 @@ target_include_directories(Atomic INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
 #include(tests-old/CMakeLists.txt)
-include(tests/CMakeLists.txt)
+include(tests/unit/CMakeLists.txt)
 include(example/CMakeLists.txt)
