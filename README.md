@@ -14,6 +14,7 @@
 * [License](https://github.com/james-d12/Atomic/wiki/License)
 
 **Contributor/Developer:**
+* [Documentation](https://james-d12.github.io/Atomic/)
 * [Testing](https://github.com/james-d12/Atomic/wiki/Testing)
 * [Coding Style](https://github.com/james-d12/Atomic/wiki/Coding-Style)
 * [Contributing](https://github.com/james-d12/Atomic/wiki/Contributing)
