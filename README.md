@@ -1,5 +1,10 @@
-# Atomic
+![GitHub Logo](https://github.com/james-d12/Atomic/blob/docs-maintenance/other/logo-256.png)
 
+[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/linux.yml/badge.svg)
+[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/windows.yml/badge.svg)
+[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/macintosh.yml/badge.svg)
+
+# Atomic
 ## Table of Contents
 
 **Getting Started:**
