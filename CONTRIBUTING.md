@@ -2,16 +2,16 @@
 ## Submitting an issue
 
 ### Bug Issue
-1. Go to the 'Issues' tab [here].(https://github.com/james-d12/Atomic/issues)
-2. Submit a new Issue, following the bug reporting format [here].(https://github.com/james-d12/Atomic/blob/docs-maintenance/.github/ISSUE_TEMPLATE/bug_report.md)
+1. Go to the 'Issues' tab [here](https://github.com/james-d12/Atomic/issues).
+2. Submit a new Issue, following the bug reporting format [here](https://github.com/james-d12/Atomic/blob/docs-maintenance/.github/ISSUE_TEMPLATE/bug_report.md).
 3. Apply appropriate labels accordingly (e.g. bug, testing, etc).
 4. Apply to appropriate project (e.g. Bugs, Development, etc).
 5. Link to pull request (if needed).
 6. Submit
 
 ### Feature Issue
-1. Go to the 'Issues' tab [here].(https://github.com/james-d12/Atomic/issues)
-2. Submit a new Issue, following the feature reporting format [here].(https://github.com/james-d12/Atomic/blob/docs-maintenance/.github/ISSUE_TEMPLATE/feature_request.md)
+1. Go to the 'Issues' tab [here](https://github.com/james-d12/Atomic/issues).
+2. Submit a new Issue, following the feature reporting format [here](https://github.com/james-d12/Atomic/blob/docs-maintenance/.github/ISSUE_TEMPLATE/feature_request.md).
 3. Apply appropriate labels accordingly (e.g. bug, testing, etc).
 4. Apply to appropriate project (e.g. Bugs, Development, etc).
 5. Link to pull request (if needed).
