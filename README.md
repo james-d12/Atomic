@@ -1,4 +1,4 @@
-![GitHub Logo](https://github.com/james-d12/Atomic/blob/docs-maintenance/other/logo-256.png)
+![GitHub Logo](https://github.com/james-d12/Atomic/blob/main/other/logo-256.png)
 
 [![Build Status](https://github.com/james-d12/Atomic/actions/workflows/linux.yml/badge.svg)
 [![Build Status](https://github.com/james-d12/Atomic/actions/workflows/windows.yml/badge.svg)
