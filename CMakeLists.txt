@@ -48,4 +48,5 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
 #include(tests-old/CMakeLists.txt)
 include(tests/unit/CMakeLists.txt)
+include(tests/performance/CMakeLists.txt)
 include(example/CMakeLists.txt)

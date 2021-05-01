@@ -14,9 +14,6 @@ enum class Level {
     ERROR 
 };
 
-//temp
-#define ATOMIC_DEBUG
-
 #if defined(ATOMIC_DEBUG)
 
 #if defined(ATOMIC_OS_WINDOWS)
