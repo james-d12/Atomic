@@ -1,7 +1,7 @@
 #include <atomic.hpp>
 #include <catch2/catch.hpp>
 
-TEMPLATE_TEST_CASE("Dynamic Sized Vector Addition - Same Type", "[dynamic-vector][addition]", int, unsigned int, float, double, long double) {
+TEMPLATE_TEST_CASE("Dynamic Sized Vector Addition - Same Type", "[dynamic-vector][addition][cumulative]", int, unsigned int, float, double, long double) {
     const atomic::linalg::dvector<TestType> v1 = { 1,2,3 };
     const atomic::linalg::dvector<TestType> v2 = { 1,2,3,4 };
     const atomic::linalg::dvector<TestType> exp = { 2,4,6,4 };

@@ -336,7 +336,6 @@ constexpr auto vector<ENG>::length_squared() const noexcept
 template<class ENG>
 constexpr auto vector<ENG>::normalised() const noexcept
 {
-	auto mag = length();
 	vector<ENG> vec;
 	std::copy(cbegin(), cend(), vec.begin());
 	vec.normalise();

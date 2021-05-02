@@ -23,7 +23,7 @@ public:
 	using storage_type = std::array<T, D>;
 
 	constexpr fixed_stack();
-	constexpr fixed_stack(const storage_type& data);
+	constexpr explicit fixed_stack(const storage_type& data);
 
 	constexpr reference operator[](const size_type index) noexcept;
 	constexpr const_reference operator[](const size_type index) const noexcept;
@@ -61,8 +61,9 @@ constexpr fixed_stack<T, D>::fixed_stack()
 
 template<typename T, std::size_t D>
 constexpr fixed_stack<T, D>::fixed_stack(const storage_type& data)
+	: m_data(data)
 {
-	m_data = data;
+
 }
 
 template<typename T, std::size_t D>
@@ -122,14 +123,14 @@ constexpr void fixed_stack<T, D>::push(const_reference item)
 	if (this->is_full()) { atomic::detail::error("Fixed stack is full, cannot add item.");  return; }
 
 	m_data[m_top] = item;
-	m_top++;
+	++m_top;
 }
 
 template<typename T, std::size_t D>
 constexpr void fixed_stack<T, D>::emplace_push()
 {
 	m_data[m_top] = typename fixed_stack<T, D>::type();
-	m_top++;	
+	++m_top;	
 }
 
 template<typename T, std::size_t D>
@@ -152,7 +153,7 @@ constexpr auto fixed_stack<T, D>::pop()
 template<typename T, std::size_t D>
 constexpr bool fixed_stack<T, D>::is_empty() const noexcept
 {
-	return (m_top <= 0) ? false : true;
+	return (m_top == 0) ? false : true;
 }
 
 template<typename T, std::size_t D>

@@ -17,9 +17,9 @@ inline void matrix_engine_addition_helper(const ENG1& lhs, const ENG2& rhs, ENG3
 	using size_type = typename ENG3::size_type;
 
 	size_type index = 0;
-	for(size_type i = 0; i < src.rows(); i++)
+	for(size_type i = 0; i < src.rows(); ++i)
 	{
-		for(size_type j = 0; j < src.columns(); j++)
+		for(size_type j = 0; j < src.columns(); ++j)
 		{
 			index = calculate_index(i, j, src.rows(), src.order());
 			src[index] = lhs[index] + rhs[index];
@@ -33,9 +33,9 @@ inline void matrix_engine_subtraction_helper(const ENG1& engine, ENG2& src)
 	using size_type = typename ENG1::size_type;
 	size_type index = 0;
 
-	for (size_type i = 0; i < engine.rows(); i++)
+	for (size_type i = 0; i < engine.rows(); ++i)
 	{
-		for (size_type j = 0; j < engine.columns(); j++)
+		for (size_type j = 0; j < engine.columns(); ++j)
 		{
 			index = calculate_index(i, j, engine.rows(), engine.order());
 			src[index] -= engine[index];
@@ -52,12 +52,12 @@ inline void matrix_engine_multiplication_row(const ENG1& lhs, const ENG2& rhs, E
 	const auto lhs_rows = lhs.rows();
 	const auto lhs_columns = lhs.columns();
 
-	for (size_type i = 0; i < lhs_rows; i++)
+	for (size_type i = 0; i < lhs_rows; ++i)
 	{
-		for (size_type j = 0; j < lhs_columns; j++)
+		for (size_type j = 0; j < lhs_columns; ++j)
 		{
 			result_type sum = 0;
-			for(size_type k = 0; k < lhs_rows; k++)
+			for(size_type k = 0; k < lhs_rows; ++k)
 			{
 				sum += lhs[k+(i*lhs_rows)] * rhs[j+(k*lhs_rows)];
 			}
@@ -75,12 +75,12 @@ inline void matrix_engine_multiplication_column(const ENG1& lhs, const ENG2& rhs
 	const auto lhs_rows = lhs.rows();
 	const auto lhs_columns = lhs.columns();
 
-	for (size_type i = 0; i < lhs_rows; i++)
+	for (size_type i = 0; i < lhs_rows; ++i)
 	{
-		for (size_type j = 0; j < lhs_columns; j++)
+		for (size_type j = 0; j < lhs_columns; ++j)
 		{
 			result_type sum = 0;
-			for(size_type k = 0; k < lhs_rows; k++)
+			for(size_type k = 0; k < lhs_rows; ++k)
 			{
 				sum += lhs[j+(k*lhs_rows)] * rhs[k+(i*lhs_rows)];
 			}
@@ -137,7 +137,7 @@ auto matrix_engine_equal(FwdIt1 first1, FwdIt1 last1, FwdIt2 first2, FwdIt2 last
 		if (first2 == last2 || !atomic::detail::are_same(*first1, *first2)) { count++; }
 		++first1; ++first2;
 	}
-	return count <= 0;
+	return count == 0;
 }
 
 }}} // atomic::linalg::detail namespace

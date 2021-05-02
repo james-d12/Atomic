@@ -33,9 +33,9 @@ public:
 	~dynamic_matrix_engine() = default;
 
 	explicit dynamic_matrix_engine(size_type num, const_reference val);
-	explicit dynamic_matrix_engine(const storage_type data);
-	dynamic_matrix_engine(const std::initializer_list<type> data);
-	dynamic_matrix_engine& operator=(const storage_type data);
+	explicit dynamic_matrix_engine(const storage_type& data);
+	explicit dynamic_matrix_engine(const std::initializer_list<type> data);
+	dynamic_matrix_engine& operator=(const storage_type& data);
 	dynamic_matrix_engine& operator=(const std::initializer_list<type> data);
 
 	ATOMIC_NODISCARD reference operator[](const size_type index);
@@ -76,7 +76,7 @@ dynamic_matrix_engine<T, O>::dynamic_matrix_engine(const size_type num, const_re
 }
 
 template<typename T, enum MatrixOrder O>
-dynamic_matrix_engine<T, O>::dynamic_matrix_engine(const storage_type data)
+dynamic_matrix_engine<T, O>::dynamic_matrix_engine(const storage_type& data)
 	: m_data(data), m_rows(data.size())
 {
 }
@@ -90,7 +90,7 @@ dynamic_matrix_engine<T, O>::dynamic_matrix_engine(const std::initializer_list<t
 
 template<typename T, enum MatrixOrder O>
 dynamic_matrix_engine<T, O>&
-dynamic_matrix_engine<T, O>::operator=(const storage_type data)
+dynamic_matrix_engine<T, O>::operator=(const storage_type& data)
 {
 	m_data = data;
 	return *this;
@@ -102,6 +102,7 @@ dynamic_matrix_engine<T, O>::operator=(const std::initializer_list<type> data)
 {
 	resize(data.size());
 	std::copy(std::cbegin(data), std::cend(data), m_data.begin());
+	return *this;
 }
 
 template<typename T, enum MatrixOrder O>

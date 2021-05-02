@@ -40,9 +40,9 @@ public:
 	~fixed_vector_engine() noexcept = default;
 
 	constexpr fixed_vector_engine();
-	constexpr explicit fixed_vector_engine(const storage_type data);
-	constexpr fixed_vector_engine(const std::initializer_list<type> data);
-	constexpr fixed_vector_engine& operator=(const storage_type data);
+	constexpr explicit fixed_vector_engine(const storage_type& data);
+	constexpr explicit fixed_vector_engine(const std::initializer_list<type> data);
+	constexpr fixed_vector_engine& operator=(const storage_type& data);
 	constexpr fixed_vector_engine& operator=(const std::initializer_list<type> data);
 
 	ATOMIC_NODISCARD constexpr reference operator[](const size_type index) noexcept;
@@ -80,7 +80,7 @@ constexpr fixed_vector_engine<T, D>::fixed_vector_engine()
 }
 
 template<typename T, std::size_t D>
-constexpr fixed_vector_engine<T, D>::fixed_vector_engine(const storage_type data)
+constexpr fixed_vector_engine<T, D>::fixed_vector_engine(const storage_type& data)
 	: m_data(data)
 {
 }
@@ -93,7 +93,7 @@ constexpr fixed_vector_engine<T, D>::fixed_vector_engine(const std::initializer_
 
 template<typename T, std::size_t D>
 constexpr fixed_vector_engine<T, D>&
-fixed_vector_engine<T, D>::operator=(const storage_type data)
+fixed_vector_engine<T, D>::operator=(const storage_type& data)
 {
 	m_data = data;
 	return *this;

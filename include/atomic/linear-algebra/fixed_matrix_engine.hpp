@@ -41,9 +41,9 @@ public:
 	~fixed_matrix_engine() = default;
 
 	constexpr fixed_matrix_engine();
-	constexpr explicit fixed_matrix_engine(const storage_type data);
-	constexpr fixed_matrix_engine(const std::initializer_list<type> data);
-	constexpr fixed_matrix_engine& operator=(const storage_type data);
+	constexpr explicit fixed_matrix_engine(const storage_type& data);
+	constexpr explicit fixed_matrix_engine(const std::initializer_list<type> data);
+	constexpr fixed_matrix_engine& operator=(const storage_type& data);
 	constexpr fixed_matrix_engine& operator=(const std::initializer_list<type> data);
 
 	ATOMIC_NODISCARD constexpr reference operator[](const size_type index);
@@ -85,7 +85,7 @@ constexpr fixed_matrix_engine<T, R, C, O>::fixed_matrix_engine()
 }
 
 template<typename T, std::size_t R, std::size_t C, enum MatrixOrder O>
-constexpr fixed_matrix_engine<T, R, C, O>::fixed_matrix_engine(const storage_type data)
+constexpr fixed_matrix_engine<T, R, C, O>::fixed_matrix_engine(const storage_type& data)
 	: m_data(data)
 {
 
@@ -99,7 +99,7 @@ constexpr fixed_matrix_engine<T, R, C, O>::fixed_matrix_engine(const std::initia
 
 template<typename T, std::size_t R, std::size_t C, enum MatrixOrder O>
 constexpr fixed_matrix_engine<T, R, C, O>&
-fixed_matrix_engine<T, R, C, O>::operator=(const storage_type data)
+fixed_matrix_engine<T, R, C, O>::operator=(const storage_type& data)
 {
 	m_data = data;
 	return *this;

@@ -63,7 +63,7 @@ auto vector_engine_equal(FwdIt1 first1, FwdIt1 last1, FwdIt2 first2, FwdIt2 last
 		if (first2 == last2 || !atomic::detail::are_same(*first1, *first2)) { count++; }
 		++first1; ++first2;
 	}
-	return count <= 0;
+	return count == 0;
 }
 
 template <class FwdIt1, class FwdIt2>
@@ -75,7 +75,7 @@ auto vector_engine_less_than(FwdIt1 first1, FwdIt1 last1, FwdIt2 first2, FwdIt2 
 		if (first2 == last2 || (*first1 >= *first2)) { count++; }
 		++first1; ++first2;
 	}
-	return count <= 0;
+	return count == 0;
 }
 
 }}} // atomic::linalg::detail namespace
