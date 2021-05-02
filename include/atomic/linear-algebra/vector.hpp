@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <type_traits>
 
+#include <atomic/linear-algebra/vector_engine_operator.hpp>
 #include <atomic/linear-algebra/traits.hpp>
 
 namespace atomic { namespace linalg {
