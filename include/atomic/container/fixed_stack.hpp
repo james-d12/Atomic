@@ -23,7 +23,7 @@ public:
 	using storage_type = std::array<T, D>;
 
 	constexpr fixed_stack();
-	constexpr explicit fixed_stack(const storage_type& data);
+	constexpr fixed_stack(const storage_type& data);
 
 	constexpr reference operator[](const size_type index) noexcept;
 	constexpr const_reference operator[](const size_type index) const noexcept;

@@ -33,8 +33,8 @@ public:
 	~dynamic_matrix_engine() = default;
 
 	explicit dynamic_matrix_engine(size_type num, const_reference val);
-	explicit dynamic_matrix_engine(const storage_type& data);
-	explicit dynamic_matrix_engine(const std::initializer_list<type> data);
+	dynamic_matrix_engine(const storage_type& data);
+	dynamic_matrix_engine(const std::initializer_list<type> data);
 	dynamic_matrix_engine& operator=(const storage_type& data);
 	dynamic_matrix_engine& operator=(const std::initializer_list<type> data);
 

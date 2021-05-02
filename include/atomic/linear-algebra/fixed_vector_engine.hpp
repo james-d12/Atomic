@@ -40,8 +40,8 @@ public:
 	~fixed_vector_engine() noexcept = default;
 
 	constexpr fixed_vector_engine();
-	constexpr explicit fixed_vector_engine(const storage_type& data);
-	constexpr explicit fixed_vector_engine(const std::initializer_list<type> data);
+	constexpr fixed_vector_engine(const storage_type& data);
+	constexpr fixed_vector_engine(const std::initializer_list<type> data);
 	constexpr fixed_vector_engine& operator=(const storage_type& data);
 	constexpr fixed_vector_engine& operator=(const std::initializer_list<type> data);
 

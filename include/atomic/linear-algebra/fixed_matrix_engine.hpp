@@ -41,8 +41,8 @@ public:
 	~fixed_matrix_engine() = default;
 
 	constexpr fixed_matrix_engine();
-	constexpr explicit fixed_matrix_engine(const storage_type& data);
-	constexpr explicit fixed_matrix_engine(const std::initializer_list<type> data);
+	constexpr fixed_matrix_engine(const storage_type& data);
+	constexpr fixed_matrix_engine(const std::initializer_list<type> data);
 	constexpr fixed_matrix_engine& operator=(const storage_type& data);
 	constexpr fixed_matrix_engine& operator=(const std::initializer_list<type> data);
 
