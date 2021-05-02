@@ -99,6 +99,7 @@ struct engine_management_promotion {
 template<typename T1, std::size_t D1, typename T2, std::size_t D2>
 static auto vector_engine_promotion(const fixed_vector_engine<T1, D1>& lhs, const fixed_vector_engine<T2, D2>& rhs) 
 {
+	(void)lhs; (void)rhs;
 	using type = element_promotion_t<T1, T2>;
 	constexpr auto size = (D1 > D2) ? D1 : D2;
 	fixed_vector_engine<type, size> engine;
