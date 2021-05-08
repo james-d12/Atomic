@@ -57,7 +57,7 @@ namespace detail {
 template<typename T1, typename T2>
 struct element_promotion_helper {
 	static_assert(std::is_arithmetic<T1>::value && std::is_arithmetic<T2>::value, "Types must be arithmetic for element promotion.");
-	using type = decltype(T1()* T2());
+	using type = decltype(T1() * T2());
 };
 
 template<typename T1, typename T2>
@@ -93,7 +93,6 @@ template<class ENG1, class ENG2>
 struct engine_management_promotion {
 	using lhs_engine_type = typename ENG1::engine_type;
 	using rhs_engine_type = typename ENG2::engine_type;
-
 };
 
 template<typename T1, std::size_t D1, typename T2, std::size_t D2>

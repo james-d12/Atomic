@@ -18,6 +18,8 @@ int main()
 	atomic::linalg::dvector<long double> v5 = { 1000.542134234032094, -100000000000000234320439249324.0 };
 
 	atomic::linalg::fmatrix2<int, atomic::linalg::MatrixOrder::Column> fmat2 = { 1,2,3,4};
+	
+	const atomic::linalg::dvector<double> v6 = { 1.1, 2.2, 3.3, 4.4 };
 
 	fmat2.print();
     return 0;
