@@ -22,7 +22,7 @@ jobs:
     - name: Build
       shell: bash 
       working-directory: ${{runner.workspace}}\build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}} -DENABLE_WARNINGS_AS_ERRORS=ON; -DENABLE_USE_QSPECTRE=ON; -DENABLE_USE_CONTROL_FLOW_GUARD=ON; cmake --build . --config ${{ matrix.mode }}
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
       
     - name: Run Tests
       working-directory: ${{runner.workspace}}\build\${{ matrix.mode }}

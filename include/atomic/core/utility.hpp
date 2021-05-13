@@ -31,13 +31,13 @@ inline auto are_same<float, float>(float num1, float num2)
 template<>
 inline auto are_same<double, double>(double num1, double num2)
 {
-	return fabs(num1 - num2) < ATOMIC_FLT_EPSILON;
+	return fabs(num1 - num2) < static_cast<double>(ATOMIC_FLT_EPSILON);
 }
 
 template<>
 inline auto are_same<long double, long double>(long double num1, long double num2)
 {
-	return fabsl(num1 - num2) < ATOMIC_FLT_EPSILON;	
+	return fabsl(num1 - num2) < static_cast<long double>(ATOMIC_FLT_EPSILON);
 }
 
 template<typename T1, typename T2>

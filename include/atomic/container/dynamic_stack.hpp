@@ -30,12 +30,12 @@ public:
 	const auto end() noexcept;
 	const auto end() const noexcept;
 
-	const void push(const_reference item);
+	void push(const_reference item);
 	const auto peek() const;
 	const auto pop();
 
-	const bool is_full() const noexcept;
-	const bool is_empty() const noexcept;
+	bool is_full() const noexcept;
+	bool is_empty() const noexcept;
 	const auto size() const noexcept;
 
 	void resize(const size_type size);
