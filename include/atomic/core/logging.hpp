@@ -65,6 +65,7 @@ static inline void trace(Args&&... args)
 {
 	std::cout << TERM_WHITE << "[TRACE]: ";
 	int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)),0)... };
+	(void)dummy;
 	std::cout << TERM_END;
 }
 

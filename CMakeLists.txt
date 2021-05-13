@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
-project(Atomic VERSION 0.1.0)
+project(Atomic VERSION 1.0.0)
 set(PROJECT_STANDARD 14)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
@@ -48,4 +48,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
 include(tests/unit/CMakeLists.txt)
 include(tests/performance/CMakeLists.txt)
-include(example/CMakeLists.txt)
+#include(example/CMakeLists.txt)
