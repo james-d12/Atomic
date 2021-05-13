@@ -5,5 +5,4 @@ bin/
 [cC]MakeFiles/
 
 CMakeCache.txt
-CMakeSettings.json
 *.hint

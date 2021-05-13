@@ -1,17 +1,8 @@
-/*==================================================================================================
-  Copyright (c) 2020 James Durban
+#include <atomic.hpp>
+#include <catch2/catch.hpp>
 
-  File:       	test_vector.hpp
 
-  Summary:    	This is a header file that defines the functions for testing the vector class.
-  GitHub Repo: 	https://github.com/james-d12/Atom
-==================================================================================================*/
-
-#ifndef ATOM_TEST_VECTOR_HPP
-#define ATOM_TEST_VECTOR_HPP
-
-#include <test_helper.hpp>
-
+/*
 using namespace atomic::linalg;
 
 namespace test {
@@ -334,5 +325,4 @@ static void run_vector_tests()
 }
 
 }
-
-#endif
+*/

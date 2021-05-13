@@ -1,16 +1,7 @@
-/*==================================================================================================
-  Copyright (c) 2020 James Durban
+#include <atomic.hpp>
+#include <catch2/catch.hpp>
 
-  File:       	test_matrix.hpp
-
-  Summary:    	This is a header file that defines the functions for testing the matrix class.
-  GitHub Repo: 	https://github.com/james-d12/Atom
-==================================================================================================*/
-
-#ifndef ATOM_TEST_MATRIX_HPP
-#define ATOM_TEST_MATRIX_HPP
-
-#include <test_helper.hpp>
+/*
 
 using namespace atomic::linalg;
 
@@ -69,4 +60,4 @@ static void run_matrix_tests()
 
 }
 
-#endif
+*/

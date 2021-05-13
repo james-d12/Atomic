@@ -22,13 +22,8 @@ jobs:
     - name: Build
       shell: bash 
       working-directory: ${{runner.workspace}}\build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}} -DENABLE_WARNINGS_AS_ERRORS=ON; -DENABLE_USE_QSPECTRE=ON; -DENABLE_USE_CONTROL_FLOW_GUARD=ON; cmake --build . --config ${{ matrix.mode }}
       
-    - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/
-      shell: bash
-      run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
     - name: Run Tests
       working-directory: ${{runner.workspace}}\build\${{ matrix.mode }}
       run: ./Tests.exe > test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt 
@@ -38,11 +33,4 @@ jobs:
       with:
             name: logs-windows
             path: ${{runner.workspace}}\build\${{ matrix.mode}}\test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-            retention-days: 1
-
-    - name: 'Upload CppCheck Logs'
-      uses: actions/upload-artifact@v2
-      with:
-            name: logs-ubuntu-focal
-            path: ${{runner.workspace}}/cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
             retention-days: 1
