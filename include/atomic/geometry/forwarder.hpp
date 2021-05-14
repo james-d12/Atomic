@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ATOMIC_GEOMETRY_GEOMETRY_FORWARDER_HPP
 #define ATOMIC_GEOMETRY_GEOMETRY_FORWARDER_HPP
 
-#include <atomic/core/utility.hpp>
 #include <cstdlib>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace geometry {

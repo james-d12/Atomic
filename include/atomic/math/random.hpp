@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ATOMIC_MATH_RANDOM_HPP
 #define ATOMIC_MATH_RANDOM_HPP
 

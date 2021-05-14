@@ -1,11 +1,10 @@
-#pragma once
 #ifndef ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_ENGINE_OPERATOR_HPP
 #define ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_ENGINE_OPERATOR_HPP
 
 #include <algorithm>
 
-#include <atomic/linear-algebra/fixed_vector_engine.hpp>
-#include <atomic/linear-algebra/dynamic_vector_engine.hpp>
+#include "atomic/linear-algebra/fixed_vector_engine.hpp"
+#include "atomic/linear-algebra/dynamic_vector_engine.hpp"
 
 namespace atomic {
 namespace linalg {

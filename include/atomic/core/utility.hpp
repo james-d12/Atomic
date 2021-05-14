@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ATOMIC_CORE_UTILITY_HPP
 #define ATOMIC_CORE_UTILITY_HPP
 
@@ -6,7 +5,7 @@
 #include <cstddef>
 #include <iostream>
 
-#include <atomic/core/logging.hpp>
+#include "atomic/core/logging.hpp"
 
 namespace atomic {
 namespace detail {

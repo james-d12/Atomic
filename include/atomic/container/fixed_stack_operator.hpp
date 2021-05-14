@@ -1,8 +1,7 @@
-#pragma once
 #ifndef ATOMIC_CONTAINER_FIXED_STACK_OPERATOR_HPP
 #define ATOMIC_CONTAINER_FIXED_STACK_OPERATOR_HPP
 
-#include <atomic/container/fixed_stack.hpp>
+#include "atomic/container/fixed_stack.hpp"
 
 namespace atomic {
 namespace container {

@@ -1,10 +1,9 @@
-#pragma once
 #ifndef ATOMIC_GEOMETRY_CIRCLE_HPP
 #define ATOMIC_GEOMETRY_CIRCLE_HPP
 
-#include <atomic/math/constants.hpp>
-#include <atomic/linear-algebra/traits.hpp>
-#include <atomic/linear-algebra/vector.hpp>
+#include "atomic/math/constants.hpp"
+#include "atomic/linear-algebra/traits.hpp"
+#include "atomic/linear-algebra/vector.hpp"
 
 namespace atomic {
 namespace geometry {

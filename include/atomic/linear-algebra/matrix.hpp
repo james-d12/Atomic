@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ATOMIC_MATH_LINEAR_ALGEBRA_MATRIX_HPP
 #define ATOMIC_MATH_LINEAR_ALGEBRA_MATRIX_HPP
 
-#include <atomic/linear-algebra/matrix_engine_operator.hpp>
 #include <cmath>
+#include "atomic/linear-algebra/matrix_engine_operator.hpp"
 
 namespace atomic {
 namespace linalg {

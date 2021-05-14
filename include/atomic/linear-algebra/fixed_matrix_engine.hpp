@@ -1,10 +1,9 @@
-#pragma once
 #ifndef ATOMIC_LINEAR_ALGEBRA_FIXED_MATRIX_ENGINE_HPP
 #define ATOMIC_LINEAR_ALGEBRA_FIXED_MATRIX_ENGINE_HPP
 
-#include <atomic/linear-algebra/matrix_order.hpp>
-#include <atomic/linear-algebra/traits.hpp>
 #include <array>
+#include "atomic/linear-algebra/matrix_order.hpp"
+#include "atomic/linear-algebra/traits.hpp"
 
 namespace atomic {
 namespace linalg {

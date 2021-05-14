@@ -1,10 +1,9 @@
-#pragma once
 #ifndef ATOMIC_CONTAINER_DYNAMIC_STACK_HPP
 #define ATOMIC_CONTAINER_DYNAMIC_STACK_HPP
 
-#include <atomic/core/utility.hpp>
-#include <type_traits>
 #include <vector>
+#include <type_traits>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace container {

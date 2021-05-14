@@ -1,10 +1,9 @@
-#pragma once
 #ifndef ATOMIC_LINEAR_ALGEBRA_TRAITS_HPP
 #define ATOMIC_LINEAR_ALGEBRA_TRAITS_HPP
 
 #include <complex>
-#include <atomic/linear-algebra/engine_properties.hpp>
-#include <atomic/linear-algebra/forwarder.hpp>
+#include "atomic/linear-algebra/engine_properties.hpp"
+#include "atomic/linear-algebra/forwarder.hpp"
 
 namespace atomic {
 namespace linalg {

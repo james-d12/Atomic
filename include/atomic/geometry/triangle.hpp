@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ATOMIC_GEOMETRY_TRIANGLE_HPP
 #define ATOMIC_GEOMETRY_TRIANGLE_HPP
 
-#include <atomic/linear-algebra/traits.hpp>
-#include <atomic/linear-algebra/vector.hpp>
+#include "atomic/linear-algebra/traits.hpp"
+#include "atomic/linear-algebra/vector.hpp"
 
 namespace atomic {
 namespace geometry {

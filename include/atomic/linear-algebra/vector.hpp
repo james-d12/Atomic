@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_HPP
 #define ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_HPP
 
@@ -7,8 +6,8 @@
 #include <stdexcept>
 #include <type_traits>
 
-#include <atomic/linear-algebra/vector_engine_operator.hpp>
-#include <atomic/linear-algebra/traits.hpp>
+#include "atomic/linear-algebra/vector_engine_operator.hpp"
+#include "atomic/linear-algebra/traits.hpp"
 
 namespace atomic {
 namespace linalg {

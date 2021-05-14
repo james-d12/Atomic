@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ATOMIC_MATH_SEQUENCE_HPP
 #define ATOMIC_MATH_SEQUENCE_HPP
 
-#include <atomic/core/utility.hpp>
 #include <array>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace math {

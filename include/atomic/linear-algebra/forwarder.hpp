@@ -1,10 +1,9 @@
-#pragma once
 #ifndef ATOMIC_LINEAR_ALGEBRA_FORWARDER_H
 #define ATOMIC_LINEAR_ALGEBRA_FORWARDER_H
 
-#include <atomic/linear-algebra/matrix_order.hpp>
-#include <atomic/core/utility.hpp>
 #include <cstdlib>
+#include "atomic/core/utility.hpp"
+#include "atomic/linear-algebra/matrix_order.hpp"
 
 namespace atomic {
 namespace linalg {

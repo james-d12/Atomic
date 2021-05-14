@@ -1,8 +1,7 @@
-#pragma once
 #ifndef ATOMIC_MATH_TIMER_HPP
 #define ATOMIC_MATH_TIMER_HPP
 
-#include <atomic/core/utility.hpp>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace math {

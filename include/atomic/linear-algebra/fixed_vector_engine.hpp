@@ -1,9 +1,8 @@
-#pragma once
 #ifndef ATOMIC_LINEAR_ALGEBRA_FIXED_VECTOR_ENGINE_HPP
 #define ATOMIC_LINEAR_ALGEBRA_FIXED_VECTOR_ENGINE_HPP
 
-#include <atomic/linear-algebra/traits.hpp>
 #include <array>
+#include "atomic/linear-algebra/traits.hpp"
 
 namespace atomic {
 namespace linalg {

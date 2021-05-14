@@ -27,7 +27,7 @@ jobs:
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: ls -la; cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic/include
@@ -64,7 +64,7 @@ jobs:
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: ls -la; cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic/include

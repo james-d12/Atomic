@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ATOMIC_CORE_LOGGING_HPP
 #define ATOMIC_CORE_LOGGING_HPP
 

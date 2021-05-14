@@ -1,4 +1,3 @@
-#pragma once
 #ifndef ATOMIC_CORE_DEFINES_HPP
 #define ATOMIC_CORE_DEFINES_HPP
 

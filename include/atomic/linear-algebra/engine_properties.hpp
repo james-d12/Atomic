@@ -1,8 +1,7 @@
-#pragma once
 #ifndef ATOMIC_LINEAR_ALGEBRA_ENGINE_PROPERTIES_HPP
 #define ATOMIC_LINEAR_ALGEBRA_ENGINE_PROPERTIES_HPP
 
-#include <atomic/core/utility.hpp>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace linalg {

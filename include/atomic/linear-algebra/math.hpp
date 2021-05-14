@@ -1,8 +1,7 @@
-#pragma once
 #ifndef ATOMIC_MATH_LINEAR_ALGEBRA_MATH_HPP
 #define ATOMIC_MATH_LINEAR_ALGEBRA_MATH_HPP
 
-#include <atomic/linear-algebra/vector.hpp>
+#include "atomic/linear-algebra/vector.hpp"
 
 namespace atomic {
 namespace linalg {
