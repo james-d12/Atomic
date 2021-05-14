@@ -1,16 +1,17 @@
-#pragma once 
+#pragma once
 #ifndef ATOMIC_MATH_TIMER_HPP
 #define ATOMIC_MATH_TIMER_HPP
 
 #include <atomic/core/utility.hpp>
 
-namespace atomic { namespace math {
+namespace atomic {
+namespace math {
 
-class timer
-{
+  class timer
+  {
+  };
 
-};
+}// namespace math
+}// namespace atomic
 
-}} // atomic::math namespace
-
-#endif // ATOMIC_MATH_TIMER_HPP
+#endif// ATOMIC_MATH_TIMER_HPP

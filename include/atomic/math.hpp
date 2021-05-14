@@ -7,4 +7,4 @@
 #include <atomic/math/sequence.hpp>
 #include <atomic/math/timer.hpp>
 
-#endif // ATOMIC_MATH_HPP
+#endif// ATOMIC_MATH_HPP

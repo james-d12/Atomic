@@ -4,4 +4,4 @@
 
 #include <atomic/physics/constants.hpp>
 
-#endif // ATOMIC_PHYSICS_HPP
+#endif// ATOMIC_PHYSICS_HPP

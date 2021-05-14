@@ -7,7 +7,7 @@
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "-DENABLE_WARNINGS_AS_ERRORS=ON; -DENABLE_USE_QSPECTRE=ON; -DENABLE_USE_CONTROL_FLOW_GUARD=ON;",
+      "cmakeCommandArgs": "-DENABLE_CPPCHECK=OFF; -DENABLE_CLANG_TIDY=OFF; -DENABLE_INCLUDE_WHAT_YOU_USE=OFF; -DENABLE_WARNINGS_AS_ERRORS=ON; -DENABLE_USE_QSPECTRE=ON; -DENABLE_USE_CONTROL_FLOW_GUARD=ON;",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -17,7 +17,7 @@
       "configurationType": "Debug",
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
+      "cmakeCommandArgs": "-DENABLE_CPPCHECK=OFF;",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x64_x64" ]

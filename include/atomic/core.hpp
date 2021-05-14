@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 #ifndef ATOMIC_CORE_HPP
 #define ATOMIC_CORE_HPP
 
@@ -9,4 +9,4 @@
 #include <atomic/core/logging.hpp>
 #include <atomic/core/utility.hpp>
 
-#endif // ATOMIC_CORE_HPP
+#endif// ATOMIC_CORE_HPP

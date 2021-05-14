@@ -24,42 +24,31 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
+    #- name: Run CppCheck
+    #  working-directory: ${{runner.workspace}}/
+    #  shell: bash
+    #  run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ #--output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+
+    #- name: Run Clang-Tidy
+    #  working-directory: ${{runner.workspace}}/
+    #  shell: bash 
+    #  run:    clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/**/*.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ #> clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/
       shell: bash
-      run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ #--output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/
+      working-directory: ${{runner.workspace}}/include
       shell: bash 
-      run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/**/*.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ #> clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: find -name '*.hpp' | xargs clang-tidy 
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: ${{runner.workspace}}/build/Tests #> test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
-    #- name: 'Upload Test Logs'
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #        name: logs-ubuntu-focal
-    #        path: ${{runner.workspace}}/build/test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-    #        retention-days: 1
+      run: ${{runner.workspace}}/build/Tests 
     
-    #- name: 'Upload CppCheck Logs'
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #        name: logs-ubuntu-focal
-    #        path: ${{runner.workspace}}/cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-    #        retention-days: 1
-
-    #- name: 'Upload Clang-Tidy Logs'
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #        name: logs-ubuntu-focal
-    #        path: ${{runner.workspace}}/clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-    #        retention-days: 1
-            
   ubuntu-bionic:
     runs-on: ubuntu-18.04
     strategy:
@@ -82,38 +71,27 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
+    #- name: Run CppCheck
+    #  working-directory: ${{runner.workspace}}/
+    #  shell: bash
+    #  run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+    #
+    #- name: Run Clang-Tidy
+    #  working-directory: ${{runner.workspace}}/
+    #  shell: bash 
+    #  run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/atomic.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ > clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/
       shell: bash
-      run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/
+      working-directory: ${{runner.workspace}}/include
       shell: bash 
-      run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/atomic.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ > clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: find -name '*.hpp' | xargs clang-tidy 
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: ${{runner.workspace}}/build/Tests > test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
-    - name: 'Upload Test Logs'
-      uses: actions/upload-artifact@v2
-      with:
-            name: logs-ubuntu-bionic
-            path: ${{runner.workspace}}/build/test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-            retention-days: 1
-
-    - name: 'Upload CppCheck Logs'
-      uses: actions/upload-artifact@v2
-      with:
-            name: logs-ubuntu-bionic
-            path: ${{runner.workspace}}/cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-            retention-days: 1
-
-    - name: 'Upload Clang-Tidy Logs'
-      uses: actions/upload-artifact@v2
-      with:
-            name: logs-ubuntu-bionic
-            path: ${{runner.workspace}}/clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-            retention-days: 1
+      run: ${{runner.workspace}}/build/Tests #> test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt

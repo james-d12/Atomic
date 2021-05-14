@@ -16,4 +16,4 @@
 #include <atomic/linear-algebra/quarternion.hpp>
 #include <atomic/linear-algebra/math.hpp>
 
-#endif // ATOMIC_LINEAR_ALGEBRA_HPP
+#endif// ATOMIC_LINEAR_ALGEBRA_HPP
