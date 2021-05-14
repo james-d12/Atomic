@@ -24,23 +24,13 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
-    #- name: Run CppCheck
-    #  working-directory: ${{runner.workspace}}/
-    #  shell: bash
-    #  run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ #--output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
-    #- name: Run Clang-Tidy
-    #  working-directory: ${{runner.workspace}}/
-    #  shell: bash 
-    #  run:    clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/**/*.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ #> clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
     - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/
+      working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: ls -la; cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/include
+      working-directory: ${{runner.workspace}}/Atomic/include
       shell: bash 
       run: find -name '*.hpp' | xargs clang-tidy 
 
@@ -71,27 +61,17 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
-    #- name: Run CppCheck
-    #  working-directory: ${{runner.workspace}}/
-    #  shell: bash
-    #  run: cppcheck --enable=all --force ${{runner.workspace}}/Atomic/include/atomic.hpp -I${{runner.workspace}}/Atomic/include/ --output-file=cppcheck-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-    #
-    #- name: Run Clang-Tidy
-    #  working-directory: ${{runner.workspace}}/
-    #  shell: bash 
-    #  run: clang-tidy -checks='*' ${{runner.workspace}}/Atomic/include/atomic.hpp -- -std=${{ matrix.standard }} -I${{runner.workspace}}/Atomic/include/ > clang-tidy-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
-
     - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/
+      working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: ls -la; cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/include
+      working-directory: ${{runner.workspace}}/Atomic/include
       shell: bash 
       run: find -name '*.hpp' | xargs clang-tidy 
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: ${{runner.workspace}}/build/Tests #> test-log-${{ matrix.standard }}-${{ matrix.compiler }}-${{ matrix.mode }}.txt
+      run: ${{runner.workspace}}/build/Tests
