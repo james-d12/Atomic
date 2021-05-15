@@ -1,5 +1,5 @@
-#ifndef ATOMIC_LINEAR_ALGEBRA_FORWARDER_H
-#define ATOMIC_LINEAR_ALGEBRA_FORWARDER_H
+#ifndef ATOMIC_LINEAR_ALGEBRA_FORWARDER_HPP
+#define ATOMIC_LINEAR_ALGEBRA_FORWARDER_HPP
 
 #include <cstdlib>
 #include "atomic/core/utility.hpp"
@@ -24,4 +24,4 @@ namespace linalg {
 }// namespace linalg
 }// namespace atomic
 
-#endif// ATOMIC_LINEAR_ALGEBRA_FORWARDER_H
+#endif// ATOMIC_LINEAR_ALGEBRA_FORWARDER_HPP

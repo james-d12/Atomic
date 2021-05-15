@@ -1,5 +1,5 @@
-#ifndef ATOMIC_MATH_LINEAR_ALGEBRA_MATRIX_HPP
-#define ATOMIC_MATH_LINEAR_ALGEBRA_MATRIX_HPP
+#ifndef ATOMIC_LINEAR_ALGEBRA_MATRIX_HPP
+#define ATOMIC_LINEAR_ALGEBRA_MATRIX_HPP
 
 #include <cmath>
 #include "atomic/linear-algebra/matrix_engine_operator.hpp"
@@ -282,6 +282,7 @@ namespace linalg {
     return matrix<result_engine_type>(result_engine);
   }
 
+  /*
   template<class ENG1, class ENG2>
   inline auto operator==(const matrix<ENG1> &lhs, const matrix<ENG2> &rhs)
   {
@@ -293,8 +294,9 @@ namespace linalg {
   {
     return;
   }
+  */
 
 }// namespace linalg
 }// namespace atomic
 
-#endif// ATOMIC_MATH_LINEAR_ALGEBRA_MATRIX_HPP
+#endif// ATOMIC_LINEAR_ALGEBRA_MATRIX_HPP

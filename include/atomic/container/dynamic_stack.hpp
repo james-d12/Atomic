@@ -23,21 +23,21 @@ namespace container {
 
     dynamic_stack();
 
-    const reference operator[](const size_type index) noexcept;
-    const const_reference operator[](const size_type index) const noexcept;
+    reference operator[](const size_type index) noexcept;
+    const_reference operator[](const size_type index) const noexcept;
 
-    const auto begin() noexcept;
-    const auto begin() const noexcept;
-    const auto end() noexcept;
-    const auto end() const noexcept;
+    auto begin() noexcept;
+    auto begin() const noexcept;
+    auto end() noexcept;
+    auto end() const noexcept;
 
     void push(const_reference item);
-    const auto peek() const;
-    const auto pop();
+    auto peek() const;
+    auto pop();
 
     bool is_full() const noexcept;
     bool is_empty() const noexcept;
-    const auto size() const noexcept;
+    auto size() const noexcept;
 
     void resize(const size_type size);
     void reserve(const size_type capacity);

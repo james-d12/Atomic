@@ -1,5 +1,5 @@
-#ifndef ATOMIC_PHYSICS_PHYSICAL_CONSTANTS_HPP
-#define ATOMIC_PHYSICS_PHYSICAL_CONSTANTS_HPP
+#ifndef ATOMIC_PHYSICS_CONSTANTS_HPP
+#define ATOMIC_PHYSICS_CONSTANTS_HPP
 
 namespace atomic {
 namespace math {
@@ -24,4 +24,4 @@ namespace math {
 }// namespace math
 }// namespace atomic
 
-#endif// ATOMIC_PHYSICS_PHYSICAL_CONSTANTS_HPP
+#endif// ATOMIC_PHYSICS_CONSTANTS_HPP

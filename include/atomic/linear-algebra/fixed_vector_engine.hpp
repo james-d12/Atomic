@@ -27,13 +27,13 @@ namespace linalg {
     using const_reverse_iterator = typename storage_type::const_reverse_iterator;
 
     constexpr fixed_vector_engine(const fixed_vector_engine &) = default;
-    constexpr fixed_vector_engine &operator=(const fixed_vector_engine &) = default;
+    constexpr fixed_vector_engine& operator=(const fixed_vector_engine &) = default;
     constexpr fixed_vector_engine(fixed_vector_engine &&) noexcept = default;
-    constexpr fixed_vector_engine &operator=(fixed_vector_engine &&) noexcept = default;
+    constexpr fixed_vector_engine& operator=(fixed_vector_engine &&) noexcept = default;
     ~fixed_vector_engine() noexcept = default;
 
     constexpr fixed_vector_engine();
-    constexpr fixed_vector_engine(const storage_type &data);
+    constexpr explicit fixed_vector_engine(const storage_type &data);
     constexpr fixed_vector_engine(const std::initializer_list<type> data);
     constexpr fixed_vector_engine &operator=(const storage_type &data);
     constexpr fixed_vector_engine &operator=(const std::initializer_list<type> data);

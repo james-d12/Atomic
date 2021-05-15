@@ -5,7 +5,7 @@ namespace atomic {
 namespace math {
   namespace constants {
     static constexpr auto PI = 3.141592653589793;
-  }
+  }// namespace constants
 }// namespace math
 }// namespace atomic
 

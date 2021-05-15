@@ -61,4 +61,4 @@ namespace linalg {
 }// namespace atomic
 
 
-#endif
+#endif// ATOMIC_LINEAR_ALGEBRA_ENGINE_PROPERTIES_HPP

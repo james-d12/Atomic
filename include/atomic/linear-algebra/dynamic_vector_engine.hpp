@@ -105,6 +105,7 @@ namespace linalg {
   {
     resize(data.size());
     std::copy(std::cbegin(data), std::cend(data), m_data.begin());
+    return *this;
   }
 
   template<typename T>

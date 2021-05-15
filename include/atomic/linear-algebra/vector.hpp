@@ -1,5 +1,5 @@
-#ifndef ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_HPP
-#define ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_HPP
+#ifndef ATOMIC_LINEAR_ALGEBRA_VECTOR_HPP
+#define ATOMIC_LINEAR_ALGEBRA_VECTOR_HPP
 
 #include <algorithm>
 #include <cmath>
@@ -353,21 +353,21 @@ namespace linalg {
   template<class ENG>
   void vector<ENG>::resize(const size_type size)
   {
-    static_assert(engine_properties<engine_type>::is_resizable == true, "Vector must be dynamic to resize!");
+    static_assert(engine_properties<engine_type>::is_resizable, "Vector must be dynamic to resize!");
     m_engine.resize(size);
   }
 
   template<class ENG>
   void vector<ENG>::reserve(const size_type capacity)
   {
-    static_assert(engine_properties<engine_type>::is_resizable == true, "Vector must be dynamic to reserve!");
+    static_assert(engine_properties<engine_type>::is_resizable, "Vector must be dynamic to reserve!");
     m_engine.reserve(capacity);
   }
 
   template<class ENG>
   void vector<ENG>::resize_and_reserve(const size_type size, const size_type capacity)
   {
-    static_assert(engine_properties<engine_type>::is_resizable == true, "Vector must be dynamic to resize and reserve!");
+    static_assert(engine_properties<engine_type>::is_resizable, "Vector must be dynamic to resize and reserve!");
     m_engine.resize(size);
     m_engine.reserve(capacity);
   }
@@ -463,4 +463,4 @@ namespace linalg {
 }// namespace linalg
 }// namespace atomic
 
-#endif// ATOMIC_MATH_LINEAR_ALGEBRA_VECTOR_HPP
+#endif// ATOMIC_LINEAR_ALGEBRA_VECTOR_HPP

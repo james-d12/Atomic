@@ -23,7 +23,7 @@ namespace container {
     using const_reference = const T &;
     using storage_type = std::array<T, D>;
 
-    constexpr fixed_stack();
+    constexpr fixed_stack() = default;
     constexpr explicit fixed_stack(const storage_type &data);
 
     constexpr reference operator[](const size_type index) noexcept;
@@ -53,11 +53,6 @@ namespace container {
     size_type m_top = 0;
     const size_type m_capacity = D;
   };
-
-  template<typename T, std::size_t D>
-  constexpr fixed_stack<T, D>::fixed_stack()
-  {
-  }
 
   template<typename T, std::size_t D>
   constexpr fixed_stack<T, D>::fixed_stack(const storage_type &data)
@@ -155,13 +150,13 @@ namespace container {
   template<typename T, std::size_t D>
   constexpr bool fixed_stack<T, D>::is_empty() const noexcept
   {
-    return (m_top == 0) ? false : true;
+    return (m_top != 0);
   }
 
   template<typename T, std::size_t D>
   constexpr bool fixed_stack<T, D>::is_full() const noexcept
   {
-    return (m_top >= m_data.max_size()) ? true : false;
+    return static_cast<bool>(m_top >= m_data.max_size());
   }
 
   template<typename T, std::size_t D>
@@ -186,4 +181,4 @@ namespace container {
 }// namespace container
 }// namespace atomic
 
-#endif// #define ATOMIC_CONTAINER_FIXED_STACK_HPP
+#endif// ATOMIC_CONTAINER_FIXED_STACK_HPP

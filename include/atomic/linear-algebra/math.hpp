@@ -1,5 +1,5 @@
-#ifndef ATOMIC_MATH_LINEAR_ALGEBRA_MATH_HPP
-#define ATOMIC_MATH_LINEAR_ALGEBRA_MATH_HPP
+#ifndef ATOMIC_LINEAR_ALGEBRA_MATH_HPP
+#define ATOMIC_LINEAR_ALGEBRA_MATH_HPP
 
 #include "atomic/linear-algebra/vector.hpp"
 
@@ -90,14 +90,6 @@ namespace linalg {
   }
 
   template<class ENG1, class ENG2>
-  ATOMIC_NODISCARD constexpr auto scalar_projection(const vector<ENG1> &lhs, const vector<ENG2> &rhs)
-  {
-    auto dot = dot_product(lhs, rhs);
-    auto multiplier = dot / rhs.length_squared();
-    return;
-  }
-
-  template<class ENG1, class ENG2>
   ATOMIC_NODISCARD constexpr bool are_orthogonal(const vector<ENG1> &lhs, const vector<ENG2> &rhs)
   {
     return (dot_product(lhs, rhs) == 0);
@@ -124,4 +116,4 @@ namespace linalg {
 }// namespace linalg
 }// namespace atomic
 
-#endif// ATOMIC_MATH_LINEAR_ALGEBRA_MATH_HPP
+#endif// ATOMIC_LINEAR_ALGEBRA_MATH_HPP

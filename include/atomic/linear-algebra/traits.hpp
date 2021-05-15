@@ -153,8 +153,8 @@ namespace linalg {
     ATOMIC_NODISCARD static constexpr auto matrix_engine_promotion(const fixed_matrix_engine<T1, R1, C1, O> &lhs, const fixed_matrix_engine<T2, R2, C2, O> &rhs)
     {
       using type = element_promotion_t<T1, T2>;
-      constexpr auto rows = atomic::detail::max(R1, R2);
-      constexpr auto columns = atomic::detail::max(C1, C2);
+      constexpr auto rows = atomic::detail::max(lhs.rows(), rhs.rows());
+      constexpr auto columns = atomic::detail::max(lhs.columns(), rhs.columns());
       fixed_matrix_engine<type, rows, columns, O> engine;
       return engine;
     }
@@ -194,4 +194,4 @@ namespace linalg {
 }// namespace linalg
 }// namespace atomic
 
-#endif// ATOMICLINEAR_ALGEBRA_TRAITS_HPP
+#endif// ATOMIC_LINEAR_ALGEBRA_TRAITS_HPP

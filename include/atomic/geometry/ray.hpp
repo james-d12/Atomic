@@ -47,4 +47,4 @@ namespace geometry {
 }// namespace geometry
 }// namespace atomic
 
-#endif// ATOMIC_MATH_GEOMETRY_RAY_HPP
+#endif// ATOMIC_GEOMETRY_RAY_HPP

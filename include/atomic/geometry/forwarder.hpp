@@ -1,5 +1,5 @@
-#ifndef ATOMIC_GEOMETRY_GEOMETRY_FORWARDER_HPP
-#define ATOMIC_GEOMETRY_GEOMETRY_FORWARDER_HPP
+#ifndef ATOMIC_GEOMETRY_FORWARDER_HPP
+#define ATOMIC_GEOMETRY_FORWARDER_HPP
 
 #include <cstdlib>
 #include "atomic/core/utility.hpp"
@@ -25,4 +25,4 @@ namespace geometry {
 }// namespace geometry
 }// namespace atomic
 
-#endif// ATOMIC_GEOMETRY_GEOMETRY_FORWARDER_HPP
+#endif// ATOMIC_GEOMETRY_FORWARDER_HPP

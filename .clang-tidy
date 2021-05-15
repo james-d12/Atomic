@@ -1,5 +1,5 @@
 ---
-Checks:          '*,-fuchsia-*, -modernize-use-trailing-return-type'
+Checks:          '*,-fuchsia-*, -modernize-use-trailing-return-type, -readability-avoid-const-params-in-decls, -llvm-include-order'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false

@@ -1,7 +1,7 @@
 #ifndef ATOMIC_CORE_DEFINES_HPP
 #define ATOMIC_CORE_DEFINES_HPP
 
-#define ATOMIC_UNUSED(x) (void)x;
+#define ATOMIC_UNUSED(x) (void)(x);
 
 #include "atomic/core/compiler.hpp"
 #include "atomic/core/operating_system.hpp"
