@@ -3,6 +3,7 @@
   option(ENABLE_WARNINGS_AS_ERRORS "Enable Treat compiler warnings as errors" OFF)
   option(ENABLE_USE_CONTROL_FLOW_GUARD "Enable Control Flow Guard" OFF)
   option(ENABLE_USE_QSPECTRE "Enable QSpectre" OFF)
+  option(ENABLE_COVERAGE "Enable coverage from compilers" OFF)
 
   set(MSVC_WARNINGS
       /W4 # Baseline reasonable warnings
@@ -64,6 +65,11 @@
       -Wlogical-op # warn about logical operations being used where bitwise were probably wanted
       -Wuseless-cast # warn if you perform a cast to the same type
   )
+
+  if(${ENABLE_COVERAGE}) 
+    message("-- Enabling code coverage.")
+    set(GCC_WARNINGS ${GCC_WARNINGS} --coverage)
+  endif()
 
   if(MSVC)
     # Removes /W3 and replaces with /W4.

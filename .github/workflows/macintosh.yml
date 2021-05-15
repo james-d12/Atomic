@@ -32,7 +32,7 @@ jobs:
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic/include
       shell: bash 
-      run: find -name '*.hpp' | xargs /usr/bin/clang-tidy 
+      run: whereis clang-tidy #find -name '*.hpp' | xargs /usr/bin/clang-tidy 
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/build

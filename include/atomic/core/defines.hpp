@@ -3,9 +3,9 @@
 
 #define ATOMIC_UNUSED(x) (void)x;
 
-#include <atomic/core/compiler.hpp>
-#include <atomic/core/operating_system.hpp>
-#include <atomic/core/standard.hpp>
+#include "atomic/core/compiler.hpp"
+#include "atomic/core/operating_system.hpp"
+#include "atomic/core/standard.hpp"
 
 #if defined(ATOMIC_STANDARD_14)
 #define ATOMIC_DEPRECATED [[deprecated]]

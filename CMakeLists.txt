@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Atomic VERSION 1.0.0)
 set(PROJECT_STANDARD 14)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompilerWarnings.cmake)

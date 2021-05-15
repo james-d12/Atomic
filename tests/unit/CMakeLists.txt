@@ -18,6 +18,7 @@ target_sources(Tests PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/linear-algebra/dynamic_vector_addition.test.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/linear-algebra/dynamic_vector_subtraction.test.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/linear-algebra/dynamic_vector_multiplication.test.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/linear-algebra/quarternion_addition.test.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/tests/)

@@ -9,7 +9,7 @@ namespace container {
   template<typename T1, std::size_t D, typename T2>
   bool operator==(const fixed_stack<T1, D> &lhs, const fixed_stack<T2, D> &rhs)
   {
-    return (lhs.data == rhs.data)
+    return (lhs.data == rhs.data);
   }
 
 }// namespace container
