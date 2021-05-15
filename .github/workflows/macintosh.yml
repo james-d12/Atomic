@@ -14,27 +14,27 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: brew install cmake cppcheck llvm
+      run: brew install cppcheck
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build
+      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
 
     - name: Build 
       shell: bash
-      working-directory: ${{runner.workspace}}/build
+      working-directory: ${{runner.workspace}}/Atomic/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
   
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/Atomic/include
+      working-directory: ${{runner.workspace}}/Atomic/
       shell: bash 
-      run: whereis clang-tidy #find -name '*.hpp' | xargs /usr/bin/clang-tidy 
+      run: echo $(whereis clang-tidy); find ./include -name '*.hpp' | xargs /usr/local/bin/clang-tidy -p build/compile_commands.json
 
     - name: Run Tests
-      working-directory: ${{runner.workspace}}/build
+      working-directory: ${{runner.workspace}}/Atomic/build
       shell: bash
-      run: ${{runner.workspace}}/build/Tests
+      run: ./Tests

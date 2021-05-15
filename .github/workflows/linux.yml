@@ -27,12 +27,12 @@ jobs:
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/Atomic/
+      working-directory: ${{runner.workspace}}/Atomic
       shell: bash 
-      run: find ./include -name '*.hpp' | xargs clang-tidy -p build/compile_commands.json
+      run: find ./include -name '*.hpp' | xargs clang-tidy -p build/compile_commands.json 
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/Atomic/build
@@ -62,9 +62,9 @@ jobs:
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
     - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/Atomic/build
+      working-directory: ${{runner.workspace}}/Atomic
       shell: bash
-      run: cppcheck --enable=all -q --force include/**/**/*.hpp -Iinclude/
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic
