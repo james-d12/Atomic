@@ -17,7 +17,7 @@ TEMPLATE_TEST_CASE("Dynamic Sized Vector Multiplication - Same Type", "[dynamic-
 }
 
 TEST_CASE("Dynamic Sized Vector Multiplication - Varying Floating Cumulative", "[dynamic-vector][multiplication][cumulative]") {
-    const atomic::linalg::dvector<float> v1 = { 1.f,2.f,3.f };
+    const atomic::linalg::dvector<float> v1 = { 1.F,2.F,3.F };
     const atomic::linalg::dvector<double> v2 = { -1.,-2.,-3.,-4. };
     const atomic::linalg::dvector<double> exp = { -1., -4., -9., -4. };
 
@@ -33,8 +33,8 @@ TEST_CASE("Dynamic Sized Vector Multiplication - Varying Floating Cumulative", "
 
 TEST_CASE("Dynamic Sized Vector Multiplication - Varying Cumulative", "[dynamic-vector][multiplication][cumulative]") {
     const atomic::linalg::dvector<int> v1 = { 1,2,3 };
-    const atomic::linalg::dvector<float> v2 = { -1.f,-2.f,-3.f,-4.f };
-    const atomic::linalg::dvector<float> exp = { -1.f, -4.f, -9.f, -4.f };
+    const atomic::linalg::dvector<float> v2 = { -1.F,-2.F,-3.F,-4.F };
+    const atomic::linalg::dvector<float> exp = { -1.F, -4.F, -9.F, -4.F };
 
     const auto res1 = v1 * v2;
     const auto res2 = v2 * v1;

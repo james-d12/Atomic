@@ -5,7 +5,6 @@ on: [push]
 jobs:
   ubuntu-focal:
     runs-on: ubuntu-20.04
-    continue-on-error: true
     strategy:
         matrix:
             compiler: [ g++-9, g++-10, clang++-9, clang++-10 ]
@@ -31,7 +30,7 @@ jobs:
       run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/Atomic
+      working-directory: ${{runner.workspace}}/Atomic/build
       shell: bash 
       run: find ./include -name '*.hpp' | xargs clang-tidy -p build/compile_commands.json 
 
@@ -42,7 +41,6 @@ jobs:
     
   ubuntu-bionic:
     runs-on: ubuntu-18.04
-    continue-on-error: true
     strategy:
         matrix:
             compiler: [ g++-7, g++-8, clang++-7, clang++-8 ]

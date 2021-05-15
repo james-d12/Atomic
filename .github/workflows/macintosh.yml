@@ -18,7 +18,7 @@ jobs:
 
     - name: Setup Symlinks
       run: ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
-           ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
+           ls -la /usr/local/bin
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
@@ -36,7 +36,7 @@ jobs:
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic/
       shell: bash 
-      run: echo $(whereis clang-tidy); find ./include -name '*.hpp' | xargs /usr/local/bin/clang-tidy -p build/compile_commands.json
+      run: echo $(whereis clang-tidy); #find ./include -name '*.hpp' | xargs /usr/local/bin/clang-tidy -p build/compile_commands.json
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/Atomic/build

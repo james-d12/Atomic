@@ -17,7 +17,7 @@ TEMPLATE_TEST_CASE("Dynamic Sized Vector Addition - Same Type", "[dynamic-vector
 }
 
 TEST_CASE("Dynamic Sized Vector Addition - Varying Floating Cumulative", "[dynamic-vector][addition][cumulative]") {
-    const atomic::linalg::dvector<float> v1 = { 1.f,2.f,3.f };
+    const atomic::linalg::dvector<float> v1 = { 1.F,2.F,3.F };
     const atomic::linalg::dvector<double> v2 = { 1.,2.,3.,4. };
     const atomic::linalg::dvector<double> exp = { 2.,4.,6.,4. };
 
@@ -33,8 +33,8 @@ TEST_CASE("Dynamic Sized Vector Addition - Varying Floating Cumulative", "[dynam
 
 TEST_CASE("Dynamic Sized Vector Addition - Varying Cumulative", "[dynamic-vector][addition][cumulative]") {
     const atomic::linalg::dvector<int> v1 = { 1,2,3 };
-    const atomic::linalg::dvector<float> v2 = { 1.1f, 2.2f, 3.3f, 4.4f };
-    const atomic::linalg::dvector<float> exp = { 2.1f, 4.2f, 6.3f, 4.4f };
+    const atomic::linalg::dvector<float> v2 = { 1.1F, 2.2F, 3.3F, 4.4F };
+    const atomic::linalg::dvector<float> exp = { 2.1F, 4.2F, 6.3F, 4.4F };
 
     const auto res1 = v1 + v2;
     const auto res2 = v2 + v1;
