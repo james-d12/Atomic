@@ -7,14 +7,14 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        compiler: [ c++, g++ ]
+        compiler: [ c++, g++-8, g++-9, g++-10 '$(brew --prefix llvm)/bin/clang' ]
         standard: [ c++14, c++17, c++2a ]
         mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
     steps:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: brew install cppcheck; ln -s "$(brew --prefix llvm)/share/clang/run-clang-tidy.py" "/usr/local/bin/run-clang-tidy.py"
+      run: brew install cppcheck
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
@@ -28,11 +28,6 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
       run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
-
-    - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/Atomic
-      shell: bash 
-      run: $(brew --prefix llvm)/share/clang/run-clang-tidy.py -header-filter='.*' -p build/ -quiet
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/Atomic/build
