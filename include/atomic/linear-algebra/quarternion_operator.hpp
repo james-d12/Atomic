@@ -2,6 +2,7 @@
 #define ATOMIC_LINEAR_ALGEBRA_QUARTERNION_OPERATOR_HPP
 
 #include <algorithm>
+#include "atomic/core/utility.hpp"
 
 namespace atomic {
 namespace linalg {

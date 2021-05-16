@@ -29,6 +29,11 @@ jobs:
       shell: bash
       run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
+    - name: Run Clang-Tidy
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash 
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet
+
     - name: Run Tests
       working-directory: ${{runner.workspace}}/Atomic/build
       shell: bash
