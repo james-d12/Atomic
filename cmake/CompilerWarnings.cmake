@@ -1,5 +1,8 @@
-function(SetProjectWarnings project_name)
-  option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" TRUE)
+ function(SetProjectWarnings project_name)
+  option(ENABLE_WARNINGS_AS_ERRORS "Enable Treat compiler warnings as errors" OFF)
+  option(ENABLE_USE_CONTROL_FLOW_GUARD "Enable Control Flow Guard" OFF)
+  option(ENABLE_USE_QSPECTRE "Enable QSpectre" OFF)
+  option(ENABLE_COVERAGE "Enable coverage from compilers" OFF)
 
   set(MSVC_WARNINGS
       /W4 # Baseline reasonable warnings
@@ -25,6 +28,7 @@ function(SetProjectWarnings project_name)
       /w14906 # string literal cast to 'LPWSTR'
       /w14928 # illegal copy-initialization; more than one user-defined conversion has been implicitly applied
       /permissive- # standards conformance mode for MSVC compiler.
+      /EHsc # Unwind semantics
   )
 
   set(CLANG_WARNINGS
@@ -46,7 +50,7 @@ function(SetProjectWarnings project_name)
       -Wmissing-include-dirs # warn on missing include directories.
   )
 
-  if(WARNINGS_AS_ERRORS)
+  if(${ENABLE_WARNINGS_AS_ERRORS})
     message("-- Warnings are being treated as errors for ${project_name}.")
     set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
     set(MSVC_WARNINGS ${MSVC_WARNINGS} /WX)
@@ -61,7 +65,14 @@ function(SetProjectWarnings project_name)
       -Wuseless-cast # warn if you perform a cast to the same type
   )
 
+  if(${ENABLE_COVERAGE}) 
+    message("-- Enabling code coverage.")
+    set(GCC_WARNINGS ${GCC_WARNINGS} --coverage)
+  endif()
+
   if(MSVC)
+    # Removes /W3 and replaces with /W4.
+    string(REGEX REPLACE "/W[3]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
     set(PROJECT_WARNINGS ${MSVC_WARNINGS})
   elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
     set(PROJECT_WARNINGS ${CLANG_WARNINGS})
@@ -70,5 +81,18 @@ function(SetProjectWarnings project_name)
   else()
     message(AUTHOR_WARNING "No compiler warnings set for '${CMAKE_CXX_COMPILER_ID}' compiler.")
   endif()
-  target_compile_options(${project_name} INTERFACE ${PROJECT_WARNINGS})
+
+  if (MSVC AND (MSVC_VERSION GREATER 1900))
+    if (${ENABLE_USE_CONTROL_FLOW_GUARD})
+        message("-- Enabling Control Flow Guard") 
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /guard:cf")
+        SET(CMAKE_EXE_LINKER_FLAGS  "/guard:cf /DYNAMICBASE")
+    endif()
+    if (${ENABLE_USE_QSPECTRE})
+        message("-- Enabling QSPECTRE Protection.")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Qspectre")
+    endif()
+  endif()
+  
+  target_compile_options(${project_name} PRIVATE ${PROJECT_WARNINGS})
 endfunction()

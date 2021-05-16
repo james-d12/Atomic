@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
-project(Atomic VERSION 0.1.0)
+project(Atomic VERSION 1.0.0)
 set(PROJECT_STANDARD 14)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/BuildTypeOptions.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Properties.cmake)
@@ -46,5 +48,5 @@ target_sources(Atomic INTERFACE
 target_include_directories(Atomic INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
-include(tests/CMakeLists.txt)
-include(example/CMakeLists.txt)
+include(tests/unit/CMakeLists.txt)
+#include(example/CMakeLists.txt)

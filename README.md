@@ -26,3 +26,7 @@ Atomic is a header only modern C++ library. It currently contains linear-algebra
 - Linear Algebra
 - Containers
 - Other Mathematical Functions
+
+
+# **Credits**
+I've used some resources in building this library for the basic CMake templates in the ```cmake/`` folder I used some resources from https://github.com/lefticus/cpp_starter_project

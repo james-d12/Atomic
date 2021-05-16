@@ -1,53 +1,54 @@
-#pragma once 
 #ifndef ATOMIC_CONTAINER_DYNAMIC_STACK_HPP
 #define ATOMIC_CONTAINER_DYNAMIC_STACK_HPP
 
-#include <atomic/core/utility.hpp>
-#include <type_traits>
 #include <vector>
+#include <type_traits>
+#include "atomic/core/utility.hpp"
 
-namespace atomic { namespace container {
+namespace atomic {
+namespace container {
 
-template<typename T>
-class dynamic_stack
-{
-	static_assert(std::is_default_constructible<T>::value, "Fixed stack type must be default constructible");
-public:
-	using type = T;
-	using size_type = std::size_t;
-	using pointer = T*;
-	using reference = T&;
-	using const_reference = const T&;
-	using storage_type = std::vector<T>;
+  template<typename T>
+  class dynamic_stack
+  {
+    static_assert(std::is_default_constructible<T>::value, "Fixed stack type must be default constructible");
 
-	dynamic_stack();
+  public:
+    using type = T;
+    using size_type = std::size_t;
+    using pointer = T *;
+    using reference = T &;
+    using const_reference = const T &;
+    using storage_type = std::vector<T>;
 
-	const reference operator[](const size_type index) noexcept;
-	const const_reference operator[](const size_type index) const noexcept;
+    dynamic_stack();
 
-	const auto begin() noexcept;
-	const auto begin() const noexcept;
-	const auto end() noexcept;
-	const auto end() const noexcept;
+    reference operator[](const size_type index) noexcept;
+    const_reference operator[](const size_type index) const noexcept;
 
-	const void push(const_reference item);
-	const auto peek() const;
-	const auto pop();
+    auto begin() noexcept;
+    auto begin() const noexcept;
+    auto end() noexcept;
+    auto end() const noexcept;
 
-	const bool is_full() const noexcept;
-	const bool is_empty() const noexcept;
-	const auto size() const noexcept;
+    void push(const_reference item);
+    auto peek() const;
+    auto pop();
 
-	void resize(const size_type size);
-	void reserve(const size_type capacity);
+    bool is_full() const noexcept;
+    bool is_empty() const noexcept;
+    auto size() const noexcept;
 
-private:
-	size_type m_top = 0;
-	storage_type m_data;
-};
+    void resize(const size_type size);
+    void reserve(const size_type capacity);
+
+  private:
+    size_type m_top = 0;
+    storage_type m_data;
+  };
 
 
+}// namespace container
+}// namespace atomic
 
-}} // atomic::container namespace
-
-#endif // ATOMIC_CONTAINER_DYNAMIC_STACK_HPP
+#endif// ATOMIC_CONTAINER_DYNAMIC_STACK_HPP

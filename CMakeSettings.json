@@ -1,0 +1,54 @@
+﻿{
+  "configurations": [
+    {
+      "name": "x64-Debug-Strict",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "-DENABLE_CPPCHECK=OFF; -DENABLE_CLANG_TIDY=OFF; -DENABLE_INCLUDE_WHAT_YOU_USE=OFF; -DENABLE_WARNINGS_AS_ERRORS=ON; -DENABLE_USE_QSPECTRE=ON; -DENABLE_USE_CONTROL_FLOW_GUARD=ON;",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "x64-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "-DENABLE_CPPCHECK=OFF;",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ]
+    },
+    {
+      "name": "WSL-GCC-Debug",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeExecutable": "cmake",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "linux_x64" ],
+      "wslPath": "C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps\\ubuntu2004.exe",
+      "addressSanitizerRuntimeFlags": "detect_leaks=0"
+    },
+    {
+      "name": "WSL-GCC-Debug-Strict",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeExecutable": "cmake",
+      "cmakeCommandArgs": "-DENABLE_WARNINGS_AS_ERRORS=ON",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "linux_x64" ],
+      "wslPath": "C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps\\ubuntu2004.exe",
+      "addressSanitizerRuntimeFlags": "detect_leaks=0"
+    }
+  ]
+}

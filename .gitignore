@@ -3,7 +3,11 @@ out/
 bin/
 [bB]uild/
 [cC]MakeFiles/
+_deps/
 
 CMakeCache.txt
-CMakeSettings.json
+cmake_install.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
 *.hint
