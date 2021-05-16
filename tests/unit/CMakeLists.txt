@@ -25,7 +25,6 @@ target_sources(Tests PRIVATE
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/tests/)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/)
 
 SetProjectWarnings(Tests)
 SetBuildTypeOptions(Tests)

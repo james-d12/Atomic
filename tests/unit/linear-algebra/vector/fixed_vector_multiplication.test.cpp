@@ -9,11 +9,11 @@ TEMPLATE_TEST_CASE("Fixed Sized Vector Multiplication - Same Type", "[fixed-vect
     const auto res1 = v1 * v2;
     const auto res2 = v2 * v1;
 
-    REQUIRE(res1 == exp);
-    REQUIRE(typeid(res1) == typeid(exp));
+    CHECK(res1 == exp);
+    CHECK(typeid(res1) == typeid(exp));
 
-    REQUIRE(res2 == exp);
-    REQUIRE(typeid(res2) == typeid(exp));
+    CHECK(res2 == exp);
+    CHECK(typeid(res2) == typeid(exp));
 }
 
 TEST_CASE("Fixed Sized Vector Multiplication - Varying Floating Cumulative", "[fixed-vector][multiplication][cumulative]") {
@@ -24,11 +24,11 @@ TEST_CASE("Fixed Sized Vector Multiplication - Varying Floating Cumulative", "[f
     const auto res1 = v1 * v2;
     const auto res2 = v2 * v1; 
 
-    REQUIRE(res1 == exp);
-    REQUIRE(typeid(res1) == typeid(exp));
+    CHECK(res1 == exp);
+    CHECK(typeid(res1) == typeid(exp));
 
-    REQUIRE(res2 == exp);
-    REQUIRE(typeid(res2) == typeid(exp));
+    CHECK(res2 == exp);
+    CHECK(typeid(res2) == typeid(exp));
 }
 
 TEST_CASE("Fixed Sized Vector Multiplication - Varying Cumulative", "[fixed-vector][multiplication][cumulative]") {
@@ -39,9 +39,9 @@ TEST_CASE("Fixed Sized Vector Multiplication - Varying Cumulative", "[fixed-vect
     const auto res1 = v1 * v2;
     const auto res2 = v2 * v1;
 
-    REQUIRE(res1 == exp);
-    REQUIRE(typeid(res1) == typeid(exp));
+    CHECK(res1 == exp);
+    CHECK(typeid(res1) == typeid(exp));
 
-    REQUIRE(res2 == exp);
-    REQUIRE(typeid(res2) == typeid(exp));
+    CHECK(res2 == exp);
+    CHECK(typeid(res2) == typeid(exp));
 }

@@ -12,12 +12,12 @@ TEST_CASE("Fixed Sized Vector Dot Product", "[fixed-vector][dotproduct]")
   const atomic::linalg::fvector<double, 3> v5 { -10, -20, -30 };
   const atomic::linalg::fvector<double, 3> v6 { 15.6, 10, 0 };
 
-  REQUIRE(atomic::linalg::dot_product(v1, v2) == 260);
-  REQUIRE(atomic::linalg::dot_product(v2, v1) == 260);
-  REQUIRE(atomic::linalg::dot_product(v3, v4) == 2322.84F);
-  REQUIRE(atomic::linalg::dot_product(v4, v3) == 2322.84F);
-  REQUIRE(atomic::linalg::dot_product(v5, v6) == -356);
-  REQUIRE(atomic::linalg::dot_product(v6, v5) == -356);
+  CHECK(atomic::linalg::dot_product(v1, v2) == 260);
+  CHECK(atomic::linalg::dot_product(v2, v1) == 260);
+  CHECK(atomic::linalg::dot_product(v3, v4) == 2322.84F);
+  CHECK(atomic::linalg::dot_product(v4, v3) == 2322.84F);
+  CHECK(atomic::linalg::dot_product(v5, v6) == -356);
+  CHECK(atomic::linalg::dot_product(v6, v5) == -356);
 }
 
 TEST_CASE("Fixed Sized Vector Cross Product - Integer", "[fixed-vector][crossproduct][cumulative]") 
@@ -30,11 +30,11 @@ TEST_CASE("Fixed Sized Vector Cross Product - Integer", "[fixed-vector][crosspro
   auto res1 = cross_product(v1, v2);
   auto res2 = cross_product(v2, v1);
 
-  REQUIRE(res1 == exp1);
-  REQUIRE(typeid(res1) == typeid(exp1));
+  CHECK(res1 == exp1);
+  CHECK(typeid(res1) == typeid(exp1));
 
-  REQUIRE(res2 == exp2);
-  REQUIRE(typeid(res2) == typeid(exp2));
+  CHECK(res2 == exp2);
+  CHECK(typeid(res2) == typeid(exp2));
 }
 
 // Cross product needs looking into tests fail due to slight differences.
@@ -49,11 +49,11 @@ TEST_CASE("Fixed Sized Vector Cross Product - Float", "[fixed-vector][crossprodu
   auto res1 = cross_product(v1, v2);
   auto res2 = cross_product(v2, v1);
 
-  REQUIRE(res1 == exp1);
-  REQUIRE(typeid(res1) == typeid(exp1));
+  CHECK(res1 == exp1);
+  CHECK(typeid(res1) == typeid(exp1));
 
-  REQUIRE(res2 == exp2);
-  REQUIRE(typeid(res2) == typeid(exp2));
+  CHECK(res2 == exp2);
+  CHECK(typeid(res2) == typeid(exp2));
 }*/
 
 TEST_CASE("Fixed Sized Vector Cross Product - Double", "[fixed-vector][crossproduct][cumulative]")
@@ -66,9 +66,9 @@ TEST_CASE("Fixed Sized Vector Cross Product - Double", "[fixed-vector][crossprod
   auto res1 = cross_product(v1, v2);
   auto res2 = cross_product(v2, v1);
 
-  REQUIRE(res1 == exp1);
-  REQUIRE(typeid(res1) == typeid(exp1));
+  CHECK(res1 == exp1);
+  CHECK(typeid(res1) == typeid(exp1));
 
-  REQUIRE(res2 == exp2);
-  REQUIRE(typeid(res2) == typeid(exp2));
+  CHECK(res2 == exp2);
+  CHECK(typeid(res2) == typeid(exp2));
 }

@@ -11,11 +11,11 @@ TEMPLATE_TEST_CASE("Fixed Sized Vector Subtraction - Same Type", "[fixed-vector]
     const auto res1 = v1 - v2;
     const auto res2 = v2 - v1;
 
-    REQUIRE(res1 == exp1);
-    REQUIRE(typeid(res1) == typeid(exp1));
+    CHECK(res1 == exp1);
+    CHECK(typeid(res1) == typeid(exp1));
 
-    REQUIRE(res2 == exp2);
-    REQUIRE(typeid(res2) == typeid(exp2));
+    CHECK(res2 == exp2);
+    CHECK(typeid(res2) == typeid(exp2));
 }*/
 
 TEST_CASE("Fixed Sized Vector Subtraction - Varying Floating", "[fixed-vector][subtraction][non-cumulative]") {
@@ -27,11 +27,11 @@ TEST_CASE("Fixed Sized Vector Subtraction - Varying Floating", "[fixed-vector][s
     const auto res1 = v1 - v2;
     const auto res2 = v2 - v1;
 
-    REQUIRE(res1 == exp1);
-    REQUIRE(typeid(res1) == typeid(exp1));
+    CHECK(res1 == exp1);
+    CHECK(typeid(res1) == typeid(exp1));
 
-    REQUIRE(res2 == exp2);
-    REQUIRE(typeid(res2) == typeid(exp2));
+    CHECK(res2 == exp2);
+    CHECK(typeid(res2) == typeid(exp2));
 }
 
 TEST_CASE("Fixed Sized Vector Subtraction - Varying", "[fixed-vector][subtraction][non-cumulative]") {
@@ -43,9 +43,9 @@ TEST_CASE("Fixed Sized Vector Subtraction - Varying", "[fixed-vector][subtractio
     const auto res1 = v1 - v2;
     const auto res2 = v2 - v1;
 
-    REQUIRE(res1 == exp1);
-    REQUIRE(typeid(res1) == typeid(exp1));
+    CHECK(res1 == exp1);
+    CHECK(typeid(res1) == typeid(exp1));
 
-    REQUIRE(res2 == exp2);
-    REQUIRE(typeid(res2) == typeid(exp2));
+    CHECK(res2 == exp2);
+    CHECK(typeid(res2) == typeid(exp2));
 }
