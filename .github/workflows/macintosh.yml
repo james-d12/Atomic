@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: brew install cppcheck
+      run: brew install cppcheck; ln -s "$(brew --prefix llvm)/share/clang/run-clang-tidy.py" "/usr/local/bin/run-clang-tidy.py"
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
@@ -32,7 +32,7 @@ jobs:
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash 
-      run: run-clang-tidy -header-filter='.*' -p build/ -quiet
+      run: $(brew --prefix llvm)/share/clang/run-clang-tidy.py -header-filter='.*' -p build/ -quiet
 
     - name: Run Tests
       working-directory: ${{runner.workspace}}/Atomic/build
