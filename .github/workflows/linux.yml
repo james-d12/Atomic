@@ -30,7 +30,7 @@ jobs:
       run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
-      working-directory: ${{runner.workspace}}/Atomic/build
+      working-directory: ${{runner.workspace}}/Atomic
       shell: bash 
       run: find ./include -name '*.hpp' | xargs clang-tidy -p build/compile_commands.json 
 

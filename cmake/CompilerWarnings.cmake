@@ -1,5 +1,4 @@
  function(SetProjectWarnings project_name)
-  #set(WARNINGS_AS_ERRORS OFF)
   option(ENABLE_WARNINGS_AS_ERRORS "Enable Treat compiler warnings as errors" OFF)
   option(ENABLE_USE_CONTROL_FLOW_GUARD "Enable Control Flow Guard" OFF)
   option(ENABLE_USE_QSPECTRE "Enable QSpectre" OFF)
