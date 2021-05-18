@@ -5,7 +5,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-20.04
-    continue-on-error: true
     steps:
 
       - name: Checkout source code
@@ -15,17 +14,21 @@ jobs:
         run: pip install guardonce; git clone https://github.com/Sarcasm/run-clang-format.git
 
       - name: Check Header Guards
+        continue-on-error: true
         working-directory: ${{runner.workspace}}/Atomic/
         run: wrongfiles=$(checkguard -r ./include/); echo $wrongfiles
 
       - name: Check File Names
+        continue-on-error: true
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_file_names.py 
 
       - name: Check Licenses
+        continue-on-error: true
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_licenses.py
 
       - name: Run Clang-Format
+        continue-on-error: true
         working-directory: ${{runner.workspace}}/Atomic/
         run: python run-clang-format/run-clang-format.py -r --extensions= cpp,h,hpp ./include/ --style=file 
