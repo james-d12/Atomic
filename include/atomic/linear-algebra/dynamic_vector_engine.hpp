@@ -34,9 +34,9 @@ namespace linalg {
     ~dynamic_vector_engine() = default;
 
     explicit dynamic_vector_engine(size_type num, const_reference val = type());
-    explicit dynamic_vector_engine(const storage_type& data);
+    explicit dynamic_vector_engine(const storage_type &data);
     dynamic_vector_engine(const std::initializer_list<type> data);
-    dynamic_vector_engine &operator=(const storage_type& data);
+    dynamic_vector_engine &operator=(const storage_type &data);
     dynamic_vector_engine &operator=(const std::initializer_list<type> data);
 
     ATOMIC_NODISCARD reference operator[](const size_type index) noexcept;
@@ -78,7 +78,7 @@ namespace linalg {
   }
 
   template<typename T>
-  dynamic_vector_engine<T>::dynamic_vector_engine(const storage_type& data)
+  dynamic_vector_engine<T>::dynamic_vector_engine(const storage_type &data)
     : m_data(data)
   {
   }
@@ -93,7 +93,7 @@ namespace linalg {
 
   template<typename T>
   dynamic_vector_engine<T> &
-    dynamic_vector_engine<T>::operator=(const storage_type& data)
+    dynamic_vector_engine<T>::operator=(const storage_type &data)
   {
     m_data = data;
     return *this;

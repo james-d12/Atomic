@@ -28,17 +28,17 @@ namespace linalg {
     using const_reverse_iterator = typename storage_type::const_reverse_iterator;
 
     constexpr fixed_matrix_engine(const fixed_matrix_engine &) = default;
-    constexpr fixed_matrix_engine& operator=(const fixed_matrix_engine &) = default;
+    constexpr fixed_matrix_engine &operator=(const fixed_matrix_engine &) = default;
     constexpr fixed_matrix_engine(fixed_matrix_engine &&) noexcept = default;
-    constexpr fixed_matrix_engine& operator=(fixed_matrix_engine &&) noexcept = default;
+    constexpr fixed_matrix_engine &operator=(fixed_matrix_engine &&) noexcept = default;
 
     ~fixed_matrix_engine() = default;
 
     constexpr fixed_matrix_engine();
     constexpr explicit fixed_matrix_engine(const storage_type &data);
     constexpr fixed_matrix_engine(const std::initializer_list<type> data);
-    constexpr fixed_matrix_engine& operator=(const storage_type &data);
-    constexpr fixed_matrix_engine& operator=(const std::initializer_list<type> data);
+    constexpr fixed_matrix_engine &operator=(const storage_type &data);
+    constexpr fixed_matrix_engine &operator=(const std::initializer_list<type> data);
 
     ATOMIC_NODISCARD constexpr reference operator[](const size_type index);
     ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const;

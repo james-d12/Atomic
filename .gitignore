@@ -5,6 +5,7 @@ bin/
 [bB]uild/
 [cC]MakeFiles/
 _deps/
+run-clang-format/
 
 CMakeCache.txt
 cmake_install.txt

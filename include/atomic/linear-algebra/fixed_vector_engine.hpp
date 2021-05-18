@@ -12,6 +12,7 @@ namespace linalg {
   {
     static_assert(is_scalar_element<T>::value, "fixed_vector_engine template parameter must be a scalar type!");
     static_assert(D > 0, "Dimension size must be greater than 0!");
+
   public:
     using type = T;
     using pointer = type *;
@@ -27,9 +28,9 @@ namespace linalg {
     using const_reverse_iterator = typename storage_type::const_reverse_iterator;
 
     constexpr fixed_vector_engine(const fixed_vector_engine &) = default;
-    constexpr fixed_vector_engine& operator=(const fixed_vector_engine &) = default;
+    constexpr fixed_vector_engine &operator=(const fixed_vector_engine &) = default;
     constexpr fixed_vector_engine(fixed_vector_engine &&) noexcept = default;
-    constexpr fixed_vector_engine& operator=(fixed_vector_engine &&) noexcept = default;
+    constexpr fixed_vector_engine &operator=(fixed_vector_engine &&) noexcept = default;
     ~fixed_vector_engine() noexcept = default;
 
     constexpr fixed_vector_engine();
