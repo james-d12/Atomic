@@ -1,0 +1,22 @@
+name: Check Files
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: pip install guardonce
+
+      - name: Check Header Guards
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: checkguard -r ./include/
+
+      - name: Check File Names
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python ./tools/check_file_names.py 
