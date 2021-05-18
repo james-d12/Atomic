@@ -33,6 +33,7 @@ def check_licenses(files):
                 hasFailed = True
             else:
                 print("Passed License Check! - ", file.name)
+    return hasFailed
 
 def run_check():
     filterList = [ ".hpp", ".cpp", ".h"]
