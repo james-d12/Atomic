@@ -15,8 +15,12 @@ jobs:
 
       - name: Check Header Guards
         working-directory: ${{runner.workspace}}/Atomic/
-        run: checkguard -r ./include/
+        run: wrongfiles=$(checkguard -r ./include/); echo $wrongfiles
 
       - name: Check File Names
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_file_names.py 
+
+      - name: Check Licenses
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python ./tools/check_licenses.py
