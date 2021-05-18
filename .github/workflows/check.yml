@@ -27,4 +27,4 @@ jobs:
 
       - name: Run Clang-Format
         working-directory: ${{runner.workspace}}/Atomic/
-        run: python run-clang-format/run-clang-format.py -r --extensions= cpp,h,hpp ./include/ --style=file 
+        run: python run-clang-format/run-clang-format.py -r --extensions cpp,h,hpp ./include/ --style=file 
