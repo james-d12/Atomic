@@ -1,10 +1,17 @@
-![GitHub Logo](https://github.com/james-d12/Atomic/blob/main/other/logo-256.png)
+<h1 align="center"> <strong> Atomic </strong> </h1>
+<p align="center">
+  <img src="https://github.com/james-d12/Atomic/blob/main/other/logo-256.png?raw=true" alt="Atomic Logo"/>
+</p>
 
-[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/linux.yml/badge.svg)](https://github.com/james-d12/Atomic/actions/workflows/linux.yml)
-[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/macintosh.yml/badge.svg)](https://github.com/james-d12/Atomic/actions/workflows/macintosh.yml)
-[![Build Status](https://github.com/james-d12/Atomic/actions/workflows/windows.yml/badge.svg)](https://github.com/james-d12/Atomic/actions/workflows/windows.yml)
+<p align="center">
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/linux.yml/badge.svg?raw=true" alt="Linux Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/macintosh.yml/badge.svg?raw=true" alt="Macintosh Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/windows.yml/badge.svg?raw=true" alt="Windows Workflow"/>  
+  <img src="https://img.shields.io/github/issues/james-d12/Atomic.svg" alt="Issues"/>
+  <img src="https://img.shields.io/github/license/james-d12/Atomic.svg" alt="Issues"/>
+</p>
 
-# Atomic
+
 ## Table of Contents
 
 **Getting Started:**
@@ -27,6 +34,8 @@ Atomic is a header only modern C++ library. It currently contains linear-algebra
 - Containers
 - Other Mathematical Functions
 
+# **License**
+Atomic is licensed under the [LGPLv3 License](https://www.gnu.org/licenses/lgpl-3.0.en.html). In essence you are free to use this library in both open source and proprietary projects, however, any changes made to the underlying code have to be released under the LGPLv3 license as well.
 
 # **Credits**
-I've used some resources in building this library for the basic CMake templates in the ```cmake/`` folder I used some resources from https://github.com/lefticus/cpp_starter_project
+I've used some resources in building this library for the basic CMake templates in the ```cmake/``` folder I used some resources from https://github.com/lefticus/cpp_starter_project
