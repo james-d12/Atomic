@@ -40,7 +40,7 @@ def run_check():
     include_files = get_files("./include", filterList)
     test_files = get_files("./tests", filterList)
     files = include_files + test_files 
-    check_licenses(files)
+    return check_licenses(files)
 
 if __name__ == "__main__":
     hasFailed = run_check()
