@@ -7,7 +7,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(Tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main.cpp)
+add_executable(Tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/unit_main.cpp)
 target_link_libraries(Tests PRIVATE Catch2::Catch2)
 target_sources(Tests PRIVATE
 	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/element_promotion.test.cpp
