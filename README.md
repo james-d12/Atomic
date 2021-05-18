@@ -1,6 +1,6 @@
 <h1 align="center"> <strong> Atomic </strong> </h1>
 <p align="center">
-  <img src="https://github.com/james-d12/Atomic/blob/main/other/logo-256.png?raw=true" alt="Atomic Logo"/>
+  <img src="https://github.com/james-d12/Atomic/blob/stable/other/logo-256.png?raw=true" alt="Atomic Logo"/>
 </p>
 
 <p align="center">
