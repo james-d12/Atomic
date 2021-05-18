@@ -38,8 +38,7 @@ def run_check():
     filterList = [ ".hpp", ".cpp", ".h"]
     include_files = get_files("./include", filterList)
     test_files = get_files("./tests", filterList)
-    example_files = get_files("./example", filterList)
-    files = include_files + test_files + example_files
+    files = include_files + test_files 
     check_licenses(files)
 
 if __name__ == "__main__":
