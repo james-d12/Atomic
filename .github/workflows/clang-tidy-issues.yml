@@ -19,10 +19,10 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/Atomic/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
-
+  
     - name: Run clang-tidy
-      run: run-clang-tidy -header-filter='.*' -p build/ -quiet --fixes-path fixes.yaml
-      
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet -export-fixes fixes.yaml
+
     - name: Run clang-tidy-pr-comments action
       uses: platisd/clang-tidy-pr-comments@master
       with:
