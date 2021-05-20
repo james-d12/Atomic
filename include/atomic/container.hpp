@@ -11,4 +11,4 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 #include "atomic/container/fixed_stack.hpp"
 #include "atomic/container/dynamic_stack.hpp"
 
-#endif
+#endif// ATOMIC_CONTAINER_HPP
