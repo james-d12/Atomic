@@ -7,24 +7,28 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+#add_executable(Tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/unit_main.cpp)
+#target_link_libraries(Tests PRIVATE Catch2::Catch2)
+#target_sources(Tests PRIVATE
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/element_promotion.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/is_engine.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/is_scalar_element.test.cpp
+	#
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_addition.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_math.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_subtraction.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_multiplication.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_addition.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_subtraction.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_multiplication.test.cpp
+	#${CMAKE_CURRENT_LIST_DIR}/linear-algebra/quarternion/quarternion_addition.test.cpp
+#)
+
 add_executable(Tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/unit_main.cpp)
+file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/tests/unit/*.cpp")
 target_link_libraries(Tests PRIVATE Catch2::Catch2)
-target_sources(Tests PRIVATE
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/element_promotion.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/is_engine.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/traits/is_scalar_element.test.cpp
-
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_addition.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_math.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_subtraction.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/fixed_vector_multiplication.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_addition.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_subtraction.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/vector/dynamic_vector_multiplication.test.cpp
-	${CMAKE_CURRENT_LIST_DIR}/linear-algebra/quarternion/quarternion_addition.test.cpp
-)
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/tests/)
+target_sources(Tests PRIVATE ${TEST_SOURCES})
+target_include_directories(Tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 
 SetProjectWarnings(Tests)
 SetBuildTypeOptions(Tests)
