@@ -24,10 +24,10 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
-    - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/Atomic
-      shell: bash
-      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
+    #- name: Run CppCheck
+    #  working-directory: ${{runner.workspace}}/Atomic
+    #  shell: bash
+    #  run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic
@@ -61,10 +61,10 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
 
-    - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/Atomic
-      shell: bash
-      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
+    #- name: Run CppCheck
+    #  working-directory: ${{runner.workspace}}/Atomic
+    #  shell: bash
+    #  run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
     - name: Run Clang-Tidy
       working-directory: ${{runner.workspace}}/Atomic
