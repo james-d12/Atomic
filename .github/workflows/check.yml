@@ -24,3 +24,7 @@ jobs:
       - name: Check Header Guards
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_header_guards.py
+ 
+      - name: Run Clang-Format
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python run-clang-format/run-clang-format.py -r --extensions cpp,h,hpp ./include/ --style=file 
