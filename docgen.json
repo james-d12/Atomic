@@ -1,0 +1,9 @@
+{
+  "config": {
+    "includeDirectory": "../include",
+    "outputDirectory": "./docs",
+    "commentDenotion": "//",
+    "filterList": [".hpp"],
+    "language": "c++"
+  }
+}
