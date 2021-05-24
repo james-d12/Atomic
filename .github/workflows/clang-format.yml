@@ -1,0 +1,28 @@
+name: Linux
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: git clone https://github.com/Sarcasm/run-clang-format.git
+
+    - name: Run Clang-Format
+      working-directory: ${{runner.workspace}}/Atomic/
+      run: python run-clang-format/run-clang-format.py -r --extensions cpp,h,hpp ./include/ --style=file 
+
+  ubuntu-bionic:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: git clone https://github.com/Sarcasm/run-clang-format.git
+
+    - name: Run Clang-Format
+      working-directory: ${{runner.workspace}}/Atomic/
+      run: python run-clang-format/run-clang-format.py -r --extensions cpp,h,hpp ./include/ --style=file 

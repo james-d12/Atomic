@@ -1,0 +1,40 @@
+name: Linux
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt-get install cppcheck
+
+    - name: Run CppCheck
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
+
+  ubuntu-bionic:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt-get install cppcheck
+
+    - name: Run CppCheck
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
+
+  macos-latest:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run CppCheck
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash
+      run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/

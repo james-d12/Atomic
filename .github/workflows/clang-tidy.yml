@@ -1,0 +1,30 @@
+name: Linux
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt-get install clang-tidy
+
+    - name: Run Clang-Tidy
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash 
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet
+
+  ubuntu-bionic:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt install clang-tidy
+
+    - name: Run Clang-Tidy
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash 
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet
