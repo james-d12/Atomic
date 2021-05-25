@@ -57,7 +57,7 @@ jobs:
     - name: Build
       shell: bash 
       working-directory: ${{runner.workspace}}/build
-      run: cmake --build . --config Debug
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++17 -DCMAKE_CXX_COMPILER=msvc-14.2; cmake --build . --config Debug
       
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/build
