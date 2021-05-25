@@ -119,9 +119,9 @@ namespace detail {
   template<typename... Args>
   static inline void trace(Args &&...) {}
   template<typename... Args>
-  static inline void info(Args &&... ) {}
+  static inline void info(Args &&...) {}
   template<typename... Args>
-  static inline void warn(Args &&... ) {}
+  static inline void warn(Args &&...) {}
   template<typename... Args>
   static inline void error(Args &&...) {}
 
