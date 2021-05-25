@@ -1,18 +1,14 @@
-name: Check Files
+name: CheckFiles
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  ubuntu-focal:
     runs-on: ubuntu-20.04
     steps:
-
-      - name: Checkout source code
+      - name: Checkout source code      
         uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: git clone https://github.com/Sarcasm/run-clang-format.git
-
+        
       - name: Check File Names
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_file_names.py 
