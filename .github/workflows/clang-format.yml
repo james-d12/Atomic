@@ -11,7 +11,7 @@ jobs:
     - name: Run clang-format
       uses: HorstBaerbel/action-clang-format@1.4
       with:
-        scandir: '${{runner.workspace}}/Atomic/include/'
+        scandir: '${{runner.workspace}}/Atomic/'
         excludedirs: 'build'
         extensions: 'hpp, h'
         style: 'file'
