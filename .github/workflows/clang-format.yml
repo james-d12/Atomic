@@ -3,39 +3,15 @@ name: ClangFormat
 on: [push, pull_request]
 
 jobs:
-  ubuntu-focal:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: git clone https://github.com/Sarcasm/run-clang-format.git
-
-    - name: Run Clang-Format
-      working-directory: ${{runner.workspace}}/Atomic/
-      run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file 
-
-  ubuntu-bionic:
-    runs-on: ubuntu-18.04
+  checkout-and-check-formatting:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Install Dependencies
-      run: git clone https://github.com/Sarcasm/run-clang-format.git
-
-    - name: Run Clang-Format
-      working-directory: ${{runner.workspace}}/Atomic/
-      run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file 
-
-  macos-latest:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: brew install clang-format; git clone https://github.com/Sarcasm/run-clang-format.git
-
-    - name: Run Clang-Format
-      working-directory: ${{runner.workspace}}/Atomic/
-      run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file 
+    - uses: actions/checkout@v2 
+    - name: Run clang-format
+      uses: HorstBaerbel/action-clang-format@1.4
+      with:
+        scandir: '${{runner.workspace}}/Atomic/include/'
+        excludedirs: 'build'
+        extensions: 'hpp, h'
+        style: 'file'

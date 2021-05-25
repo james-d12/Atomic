@@ -64,7 +64,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void log(Args &&...args)
+  static inline void log(Args &&... args)
   {
     std::cout << "[LOG]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -73,7 +73,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void trace(Args &&...args)
+  static inline void trace(Args &&... args)
   {
     std::cout << TERM_WHITE << "[TRACE]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -82,7 +82,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void info(Args &&...args)
+  static inline void info(Args &&... args)
   {
     std::cout << TERM_GREEN << "[INFO]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -91,7 +91,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void warn(Args &&...args)
+  static inline void warn(Args &&... args)
   {
     std::cout << TERM_YELLOW << "[WARNING]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -100,7 +100,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void error(Args &&...args)
+  static inline void error(Args &&... args)
   {
     std::cout << TERM_RED << "[ERROR]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args), std::cerr), 0)... };
@@ -110,20 +110,20 @@ namespace detail {
 
 #else
 
-  static inline auto level_as_string(const Level & /* Level */)
+  static inline auto level_as_string(const Level &)
   {}
   template<typename T>
-  static inline void log_argument(T /* t */) {}
+  static inline void log_argument(T) {}
   template<typename... Args>
-  static inline void log(Args &&.../* args */) {}
+  static inline void log(Args &&...) {}
   template<typename... Args>
-  static inline void trace(Args &&.../* args */) {}
+  static inline void trace(Args &&...) {}
   template<typename... Args>
-  static inline void info(Args &&.../* args */) {}
+  static inline void info(Args &&..) {}
   template<typename... Args>
-  static inline void warn(Args &&.../* args */) {}
+  static inline void warn(Args &&..) {}
   template<typename... Args>
-  static inline void error(Args &&.../* args */) {}
+  static inline void error(Args &&...) {}
 
 #endif
 
