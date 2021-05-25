@@ -61,7 +61,7 @@ jobs:
       
     - name: Run CppCheck
       working-directory: ${{runner.workspace}}/build
-      run: ls -la
+      run: Get-ChildItem -Path . -Name
 
   windows-2016:
     runs-on: windows-2016
