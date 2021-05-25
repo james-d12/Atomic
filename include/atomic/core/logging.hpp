@@ -41,7 +41,7 @@ namespace detail {
   constexpr auto TERM_END = "";
 #endif
 
-  static inline const char *level_as_string(const Level &Level)
+  static inline const char *level_as_string(const Level   &Level)
   {
     switch (Level) {
     case Level::TRACE:
