@@ -1,6 +1,6 @@
 name: CppCheck
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   ubuntu-focal:
@@ -42,31 +42,3 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic
       shell: bash
       run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
-
-  windows-2019:
-    runs-on: windows-2019
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: choco install cppcheck -y
-
-    - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}\build
-
-    - name: Build
-      shell: bash 
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++17 -DCMAKE_CXX_COMPILER=msvc-14.2; cmake --build . --config Debug
-      
-    - name: Run CppCheck
-      working-directory: ${{runner.workspace}}/build
-      run: Get-ChildItem -Path . -Name
-
-  windows-2016:
-    runs-on: windows-2016
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: choco install cppcheck -y
