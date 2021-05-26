@@ -1,0 +1,19 @@
+name: Documentation
+
+on: 
+  push: 
+      branches:
+        - stable
+        - dev 
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout source code      
+        uses: actions/checkout@v2
+
+      - name: Generate Documentation
+        working-directory: ${{runner.workspace}}/Atomic
+        shell: bash
+        run: ./tools/build_documentation.sh
