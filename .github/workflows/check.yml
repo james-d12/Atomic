@@ -1,4 +1,4 @@
-name: CheckFiles
+name: Custom Check
 
 on: [push, pull_request]
 

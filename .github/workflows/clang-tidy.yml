@@ -1,4 +1,4 @@
-name: ClangTidy
+name: Clang-Tidy
 
 on: [push, pull_request]
 

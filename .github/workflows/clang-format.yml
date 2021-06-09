@@ -1,4 +1,4 @@
-name: ClangFormat
+name: Clang-Format
 
 on: [push, pull_request]
 
