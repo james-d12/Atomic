@@ -3,18 +3,38 @@ name: Macintosh
 on: [push]
 
 jobs:
-  macos-latest:
-    runs-on: macos-latest
+  macos-11:
+    runs-on: macos-11.0
     strategy:
       matrix:
-        compiler: [ c++, g++-8, g++-9, g++-10 ]
+        compiler: [ c++, g++-9, g++-10 ]
         standard: [ c++14, c++17, c++2a ]
         mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: brew install gcc
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+    - name: Build 
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+ 
+    - name: Run Tests
+      working-directory: ${{runner.workspace}}/Atomic/build
+      shell: bash
+      run: ./Tests
+
+  macos-1015:
+    runs-on: macos-10.15
+    strategy:
+      matrix:
+        compiler: [ c++, g++-9, g++-10 ]
+        standard: [ c++14, c++17, c++2a ]
+        mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
+    steps:
+    - uses: actions/checkout@v2
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
