@@ -16,7 +16,7 @@ jobs:
       - name: Generate Documentation
         working-directory: ${{runner.workspace}}/Atomic
         shell: bash
-        run: ./tools/build_documentation.sh
+        run: sudo chmod +x ./tools/build_documentation.sh; ./tools/build_documentation.sh
 
       - uses: actions/upload-artifact@v2
         with:
