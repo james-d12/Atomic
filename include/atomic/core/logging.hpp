@@ -13,7 +13,6 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 
 namespace atomic {
 namespace detail {
-
   enum class Level {
     TRACE,
     INFO,

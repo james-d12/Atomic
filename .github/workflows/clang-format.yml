@@ -1,6 +1,6 @@
-name: ClangFormat
+name: Clang-Format
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   ubuntu-focal:
@@ -9,6 +9,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
+      run: sudo apt install python clang-format
+
+    - name: Download Run-Clang-Format
       run: git clone https://github.com/Sarcasm/run-clang-format.git
 
     - name: Run Clang-Format

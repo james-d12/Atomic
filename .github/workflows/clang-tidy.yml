@@ -1,6 +1,6 @@
-name: ClangTidy
+name: Clang-Tidy
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   ubuntu-focal:

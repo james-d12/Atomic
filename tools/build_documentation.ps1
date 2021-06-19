@@ -1,8 +1,10 @@
-
 $currentLocation = (Get-Location | Out-String)
 
-Get-ChildItem -Path "./Dokky" -Recurse | Remove-Item -Force -Recurse -Confirm:$false
-Remove-Item "./Dokky" -Recurse -Force -Confirm:$false
+if((Test-Path "./Dokky")){
+	Write-Host "Removing old files"
+	Get-ChildItem -Path "./Dokky" -Recurse | Remove-Item -Force -Recurse -Confirm:$false
+	Remove-Item "./Dokky" -Recurse -Force -Confirm:$false
+}
 
 git clone https://github.com/james-d12/Dokky.git
 Copy-Item ./docgen.json -Destination "./Dokky" 

@@ -11,6 +11,7 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 TEST_CASE("is_engine_fixed detects invalid types.", "[trait]")
 {
   CHECK_FALSE(atomic::linalg::is_engine_fixed<atomic::linalg::dynamic_vector_engine<int>>::value);
+  CHECK_FALSE(atomic::linalg::is_engine_fixed<atomic::linalg::dynamic_matrix_engine<int>>::value);
 }
 
 TEST_CASE("is_engine_fixed detects valid types.", "[trait]")

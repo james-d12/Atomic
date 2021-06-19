@@ -67,7 +67,7 @@
 
   if(${ENABLE_COVERAGE}) 
     message("-- Enabling code coverage.")
-    set(GCC_WARNINGS ${GCC_WARNINGS} --coverage)
+    set(GCC_WARNINGS ${GCC_WARNINGS} --coverage -fprofile-arcs -ftest-coverage)
   endif()
 
   if(MSVC)

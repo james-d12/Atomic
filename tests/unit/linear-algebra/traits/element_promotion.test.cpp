@@ -18,4 +18,7 @@ TEST_CASE("element_promotion_t - varying type", "[trait]")
   CHECK(typeid(atomic::linalg::detail::element_promotion_t<float, int>) == typeid(float));
   CHECK(typeid(atomic::linalg::detail::element_promotion_t<float, double>) == typeid(double));
   CHECK(typeid(atomic::linalg::detail::element_promotion_t<signed int, int>) == typeid(int));
+  CHECK(typeid(atomic::linalg::detail::element_promotion_t<int, float>) == typeid(float));
+  CHECK(typeid(atomic::linalg::detail::element_promotion_t<double, float>) == typeid(double));
+  CHECK(typeid(atomic::linalg::detail::element_promotion_t<int, signed int>) == typeid(int));
 }

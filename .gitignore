@@ -8,6 +8,7 @@ _deps/
 run-clang-format/
 [dD]okky
 temp/
+[cC]overage/
 
 CMakeCache.txt
 cmake_install.txt
