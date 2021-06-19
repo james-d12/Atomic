@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: sudo apt-get lcov
+      run: sudo apt-get install lcov
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
@@ -17,7 +17,7 @@ jobs:
     - name: Build 
       shell: bash
       working-directory: ${{runner.workspace}}/Atomic/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=14 -DCMAKE_CXX_COMPILER=g++ -DENABLE_COVERAGE=ON; cmake --build . --config Debug
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++14 -DCMAKE_CXX_COMPILER=g++ -DENABLE_COVERAGE=ON; cmake --build . --config Debug
 
     - name: Execute Tests
       shell: bash
@@ -36,5 +36,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Upload Coverage Report
-        path: ${{runner.workspace}}/Atomic/docs/
+        name: Atomic-Coverage-Report
+        path: ${{runner.workspace}}/Atomic/coverage/
