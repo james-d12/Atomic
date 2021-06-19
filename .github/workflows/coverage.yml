@@ -1,0 +1,40 @@
+name: Code Coverage
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt-get lcov
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+    - name: Build 
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=14 -DCMAKE_CXX_COMPILER=g++ -DENABLE_COVERAGE=ON; cmake --build . --config Debug
+
+    - name: Execute Tests
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: make Tests; ./Tests
+      
+    - name: Generate Coverage Files
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: lcov --capture --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
+
+    - name: Generate HTML Reports
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: genhtml coverage.info --output-directory ../coverage/   
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Upload Coverage Report
+        path: ${{runner.workspace}}/Atomic/docs/

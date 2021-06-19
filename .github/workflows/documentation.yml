@@ -17,3 +17,8 @@ jobs:
         working-directory: ${{runner.workspace}}/Atomic
         shell: bash
         run: ./tools/build_documentation.sh
+
+      - uses: actions/upload-artifact@v2
+        with:
+            name: Upload Documentation
+            path: ${{runner.workspace}}/Atomic/docs/
