@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: sudo apt-get lcov
+      run: sudo apt-get install lcov
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
