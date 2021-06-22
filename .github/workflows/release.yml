@@ -1,0 +1,38 @@
+name: Release
+
+on: 
+  push: 
+      branches:
+        - stable
+
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            file: ${{runner.workspace}}/Atomic/include/
+            asset_name: Atomic
+            tag: ${{ github.ref }}
+            overwrite: true
+            body: "Atomic Release."
+
+  Windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            file: ${{runner.workspace}}/Atomic/include/
+            asset_name: Atomic
+            tag: ${{ github.ref }}
+            overwrite: true
+            body: "Atomic Release."
