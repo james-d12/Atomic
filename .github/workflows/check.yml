@@ -1,0 +1,22 @@
+name: Custom Check
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout source code      
+        uses: actions/checkout@v2
+        
+      - name: Check File Names
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python ./tools/check_file_names.py 
+
+      - name: Check Licenses
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python ./tools/check_licenses.py
+
+      - name: Check Header Guards
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python ./tools/check_header_guards.py

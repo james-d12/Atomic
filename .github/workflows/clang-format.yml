@@ -1,0 +1,19 @@
+name: Clang-Format
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt install python clang-format
+
+    - name: Download Run-Clang-Format
+      run: git clone https://github.com/Sarcasm/run-clang-format.git
+
+    - name: Run Clang-Format
+      working-directory: ${{runner.workspace}}/Atomic/
+      run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file 

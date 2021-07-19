@@ -11,6 +11,13 @@
   <img src="https://img.shields.io/github/license/james-d12/Atomic.svg" alt="Issues"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/cppcheck.yml/badge.svg?raw=true" alt="CppCheck Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/check.yml/badge.svg?raw=true" alt="Check Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/clang-format.yml/badge.svg?raw=true" alt="ClangFormat Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/clang-tidy.yml/badge.svg?raw=true" alt="ClangTidy Workflow"/>  
+</p>
+
 
 ## Table of Contents
 

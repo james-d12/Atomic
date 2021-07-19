@@ -1,0 +1,46 @@
+name: Clang-Tidy
+
+on: [push]
+
+jobs:
+  ubuntu-focal:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt install clang-tidy
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+    - name: Build 
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++17 -DCMAKE_CXX_COMPILER=g++; cmake --build . --config Debug 
+
+    - name: Run Clang-Tidy
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash 
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet
+
+  ubuntu-bionic:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt install clang-tidy
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+    - name: Build 
+      shell: bash
+      working-directory: ${{runner.workspace}}/Atomic/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++17 -DCMAKE_CXX_COMPILER=g++; cmake --build . --config Debug 
+
+    - name: Run Clang-Tidy
+      working-directory: ${{runner.workspace}}/Atomic
+      shell: bash 
+      run: run-clang-tidy -header-filter='.*' -p build/ -quiet

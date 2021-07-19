@@ -1,3 +1,10 @@
+/**********************************************************************
+This file is part of Atomic which is released under the
+GNU LESSER GENERAL PUBLIC LICENSE Version 3.
+
+See file LICENSE or go to 
+https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
+***********************************************************************/
 #ifndef ATOMIC_LINEAR_ALGEBRA_FIXED_VECTOR_ENGINE_HPP
 #define ATOMIC_LINEAR_ALGEBRA_FIXED_VECTOR_ENGINE_HPP
 
@@ -12,6 +19,7 @@ namespace linalg {
   {
     static_assert(is_scalar_element<T>::value, "fixed_vector_engine template parameter must be a scalar type!");
     static_assert(D > 0, "Dimension size must be greater than 0!");
+
   public:
     using type = T;
     using pointer = type *;
@@ -27,9 +35,9 @@ namespace linalg {
     using const_reverse_iterator = typename storage_type::const_reverse_iterator;
 
     constexpr fixed_vector_engine(const fixed_vector_engine &) = default;
-    constexpr fixed_vector_engine& operator=(const fixed_vector_engine &) = default;
+    constexpr fixed_vector_engine &operator=(const fixed_vector_engine &) = default;
     constexpr fixed_vector_engine(fixed_vector_engine &&) noexcept = default;
-    constexpr fixed_vector_engine& operator=(fixed_vector_engine &&) noexcept = default;
+    constexpr fixed_vector_engine &operator=(fixed_vector_engine &&) noexcept = default;
     ~fixed_vector_engine() noexcept = default;
 
     constexpr fixed_vector_engine();

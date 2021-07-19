@@ -1,9 +1,14 @@
 out/
 .vs/
+.vscode/
 bin/
 [bB]uild/
 [cC]MakeFiles/
 _deps/
+run-clang-format/
+[dD]okky
+temp/
+[cC]overage/
 
 CMakeCache.txt
 cmake_install.txt

@@ -12,10 +12,7 @@ jobs:
         mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: choco install cppcheck -y
-
+    
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}\build
 
@@ -37,9 +34,6 @@ jobs:
         mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: choco install cppcheck -y
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}\build
