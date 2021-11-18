@@ -45,4 +45,4 @@ Atomic is a header only modern C++ library. It currently contains linear-algebra
 Atomic is licensed under the [LGPLv3 License](https://www.gnu.org/licenses/lgpl-3.0.en.html). In essence you are free to use this library in both open source and proprietary projects, however, any changes made to the underlying code have to be released under the LGPLv3 license as well.
 
 # **Credits**
-I've used some resources in building this library for the basic CMake templates in the ```cmake/``` folder I used some resources from https://github.com/lefticus/cpp_starter_project
+I've used some resources in building this library for the basic CMake templates in the ```cmake/``` folder I used some resources from - https://github.com/lefticus/cpp_starter_project
