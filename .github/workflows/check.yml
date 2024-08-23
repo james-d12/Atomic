@@ -3,11 +3,10 @@ name: Custom Check
 on: [push]
 
 jobs:
-  ubuntu-focal:
+  check-files:
     runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout source code      
-        uses: actions/checkout@v4
+    steps:    
+      - uses: actions/checkout@v4
         
       - name: Check File Names
         working-directory: ${{runner.workspace}}/Atomic/
@@ -20,3 +19,75 @@ jobs:
       - name: Check Header Guards
         working-directory: ${{runner.workspace}}/Atomic/
         run: python ./tools/check_header_guards.py
+        
+  clang-format:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: sudo apt install python clang-format
+
+      - name: Download Run-Clang-Format
+        run: git clone https://github.com/Sarcasm/run-clang-format.git
+
+      - name: Run Clang-Format
+        working-directory: ${{runner.workspace}}/Atomic/
+        run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file
+  
+  clang-tidy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: sudo apt install clang-tidy
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+      - name: Build
+        shell: bash
+        working-directory: ${{runner.workspace}}/Atomic/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++17 -DCMAKE_CXX_COMPILER=g++; cmake --build . --config Debug
+
+      - name: Run Clang-Tidy
+        working-directory: ${{runner.workspace}}/Atomic
+        shell: bash
+        run: run-clang-tidy -header-filter='.*' -p build/ -quiet
+        
+  coverage:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: sudo apt-get install lcov
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+
+      - name: Build
+        shell: bash
+        working-directory: ${{runner.workspace}}/Atomic/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=-std=c++14 -DCMAKE_CXX_COMPILER=g++ -DENABLE_COVERAGE=ON; cmake --build . --config Debug
+
+      - name: Execute Tests
+        shell: bash
+        working-directory: ${{runner.workspace}}/Atomic/build
+        run: make Tests; ./Tests
+
+      - name: Generate Coverage Files
+        shell: bash
+        working-directory: ${{runner.workspace}}/Atomic/build
+        run: lcov --capture --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
+
+      - name: Generate HTML Reports
+        shell: bash
+        working-directory: ${{runner.workspace}}/Atomic/build
+        run: genhtml coverage.info --output-directory ../coverage/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Atomic-Coverage-Report
+          path: ${{runner.workspace}}/Atomic/coverage/
