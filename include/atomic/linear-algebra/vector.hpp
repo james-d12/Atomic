@@ -58,22 +58,22 @@ namespace linalg {
     constexpr vector &operator=(const vector &lhs) = default;
     ~vector() noexcept = default;
 
-    constexpr explicit vector(const storage_type data);
-    constexpr vector(const std::initializer_list<type> data);
+    constexpr explicit vector(storage_type data);
+    constexpr vector(std::initializer_list<type> data);
     constexpr explicit vector(const ENG &engine);
-    constexpr vector &operator=(const storage_type data);
-    constexpr vector &operator=(const std::initializer_list<type> data);
+    constexpr vector &operator=(storage_type data);
+    constexpr vector &operator=(std::initializer_list<type> data);
     constexpr vector &operator=(const ENG &engine);
 
-    ATOMIC_NODISCARD constexpr reference operator[](const size_type index) noexcept;
-    ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const noexcept;
+    ATOMIC_NODISCARD constexpr reference operator[](size_type index) noexcept;
+    ATOMIC_NODISCARD constexpr const_reference operator[](size_type index) const noexcept;
 
     ATOMIC_NODISCARD constexpr auto operator+=(const vector<ENG> &rhs);
-    ATOMIC_NODISCARD constexpr auto operator+=(const type scalar);
+    ATOMIC_NODISCARD constexpr auto operator+=(type scalar);
     ATOMIC_NODISCARD constexpr auto operator-=(const vector<ENG> &rhs);
-    ATOMIC_NODISCARD constexpr auto operator-=(const type scalar);
+    ATOMIC_NODISCARD constexpr auto operator-=(type scalar);
     ATOMIC_NODISCARD constexpr auto operator*=(const vector<ENG> &rhs);
-    ATOMIC_NODISCARD constexpr auto operator*=(const type scalar);
+    ATOMIC_NODISCARD constexpr auto operator*=(type scalar);
 
     constexpr auto begin() noexcept;
     constexpr auto begin() const noexcept;
@@ -104,9 +104,9 @@ namespace linalg {
     ATOMIC_NODISCARD constexpr auto length_squared() const noexcept;
     ATOMIC_NODISCARD constexpr auto normalised() const noexcept;
 
-    void resize(const size_type size);
-    void reserve(const size_type capacity);
-    void resize_and_reserve(const size_type size, const size_type capacity);
+    void resize(size_type size);
+    void reserve(size_type capacity);
+    void resize_and_reserve(size_type size, size_type capacity);
 
   private:
     ENG m_engine;

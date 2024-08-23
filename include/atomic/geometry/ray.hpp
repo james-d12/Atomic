@@ -37,7 +37,7 @@ namespace geometry {
     constexpr ray &operator=(ray &&lhs) noexcept = default;
     ~ray() = default;
 
-    constexpr ray(const linalg::fvector<T, D> _origin, const linalg::fvector<T, D> _direction);
+    constexpr ray(linalg::fvector<T, D> _origin, linalg::fvector<T, D> _direction);
 
   public:
     linalg::fvector<T, D> origin;

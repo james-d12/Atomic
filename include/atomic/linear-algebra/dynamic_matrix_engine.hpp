@@ -42,14 +42,14 @@ namespace linalg {
 
     explicit dynamic_matrix_engine(size_type num, const_reference val);
     explicit dynamic_matrix_engine(const storage_type &data);
-    dynamic_matrix_engine(const std::initializer_list<type> data);
+    dynamic_matrix_engine(std::initializer_list<type> data);
     dynamic_matrix_engine &operator=(const storage_type &data);
-    dynamic_matrix_engine &operator=(const std::initializer_list<type> data);
+    dynamic_matrix_engine &operator=(std::initializer_list<type> data);
 
-    ATOMIC_NODISCARD reference operator[](const size_type index);
-    ATOMIC_NODISCARD const_reference operator[](const size_type index) const;
-    ATOMIC_NODISCARD reference operator()(const size_type i, const size_type j);
-    ATOMIC_NODISCARD const_reference operator()(const size_type i, const size_type j) const;
+    ATOMIC_NODISCARD reference operator[](size_type index);
+    ATOMIC_NODISCARD const_reference operator[](size_type index) const;
+    ATOMIC_NODISCARD reference operator()(size_type i, size_type j);
+    ATOMIC_NODISCARD const_reference operator()(size_type i, size_type j) const;
 
     ATOMIC_NODISCARD constexpr auto order() const noexcept;
     ATOMIC_NODISCARD auto data() const noexcept;
@@ -60,9 +60,9 @@ namespace linalg {
     ATOMIC_NODISCARD auto columns() const noexcept;
     ATOMIC_NODISCARD auto columns_capacity() const noexcept;
 
-    void resize(const size_type rows, const size_type cols);
-    void reserve(const size_type rows_capacity, const size_type cols_capacity);
-    void resize_and_reserve(const size_type rows, const size_type rows_capacity, const size_type cols, const size_type cols_capacity);
+    void resize(size_type rows, size_type cols);
+    void reserve(size_type rows_capacity, size_type cols_capacity);
+    void resize_and_reserve(size_type rows, size_type rows_capacity, size_type cols, size_type cols_capacity);
 
     void fill(const_reference n);
 
@@ -74,7 +74,7 @@ namespace linalg {
     size_type m_columns_capacity = 0;
     static constexpr MatrixOrder m_order = O;
 
-    auto index(const size_type i, const size_type j) const;
+    auto index(size_type i, size_type j) const;
   };
 
   template<typename T, enum MatrixOrder O>

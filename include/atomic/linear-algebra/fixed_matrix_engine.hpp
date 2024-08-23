@@ -43,14 +43,14 @@ namespace linalg {
 
     constexpr fixed_matrix_engine();
     constexpr explicit fixed_matrix_engine(const storage_type &data);
-    constexpr fixed_matrix_engine(const std::initializer_list<type> data);
+    constexpr fixed_matrix_engine(std::initializer_list<type> data);
     constexpr fixed_matrix_engine &operator=(const storage_type &data);
-    constexpr fixed_matrix_engine &operator=(const std::initializer_list<type> data);
+    constexpr fixed_matrix_engine &operator=(std::initializer_list<type> data);
 
-    ATOMIC_NODISCARD constexpr reference operator[](const size_type index);
-    ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const;
-    ATOMIC_NODISCARD constexpr reference operator()(const size_type i, const size_type j);
-    ATOMIC_NODISCARD constexpr const_reference operator()(const size_type i, const size_type j) const;
+    ATOMIC_NODISCARD constexpr reference operator[](size_type index);
+    ATOMIC_NODISCARD constexpr const_reference operator[](size_type index) const;
+    ATOMIC_NODISCARD constexpr reference operator()(size_type i, size_type j);
+    ATOMIC_NODISCARD constexpr const_reference operator()(size_type i, size_type j) const;
 
     constexpr auto begin() noexcept;
     constexpr auto begin() const noexcept;
@@ -76,7 +76,7 @@ namespace linalg {
     static constexpr size_type m_columns_capacity = C;
     static constexpr MatrixOrder m_order = O;
 
-    constexpr auto index(const size_type i, const size_type j) const;
+    constexpr auto index(size_type i, size_type j) const;
   };
 
   template<typename T, std::size_t R, std::size_t C, enum MatrixOrder O>

@@ -37,7 +37,7 @@ namespace geometry {
     constexpr line_segment &operator=(line_segment &&lhs) noexcept = default;
     ~line_segment() = default;
 
-    constexpr line_segment(const linalg::fvector<T, D> _start, const linalg::fvector<T, D> _end);
+    constexpr line_segment(linalg::fvector<T, D> _start, linalg::fvector<T, D> _end);
 
   public:
     linalg::fvector<T, D> start;

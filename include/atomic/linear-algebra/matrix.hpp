@@ -57,18 +57,18 @@ namespace linalg {
     ~matrix() = default;
 
     constexpr matrix();
-    constexpr explicit matrix(const storage_type data);
-    constexpr matrix(const std::initializer_list<type> data);
+    constexpr explicit matrix(storage_type data);
+    constexpr matrix(std::initializer_list<type> data);
     constexpr explicit matrix(const ENG &engine);
-    constexpr matrix &operator=(const storage_type data);
-    constexpr matrix &operator=(const std::initializer_list<type> data);
+    constexpr matrix &operator=(storage_type data);
+    constexpr matrix &operator=(std::initializer_list<type> data);
     constexpr matrix &operator=(const ENG &engine);
 
-    ATOMIC_NODISCARD constexpr reference operator[](const size_type index);
-    ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const;
+    ATOMIC_NODISCARD constexpr reference operator[](size_type index);
+    ATOMIC_NODISCARD constexpr const_reference operator[](size_type index) const;
 
-    ATOMIC_NODISCARD constexpr reference operator()(const size_type i, const size_type j);
-    ATOMIC_NODISCARD constexpr const_reference operator()(const size_type i, const size_type j) const;
+    ATOMIC_NODISCARD constexpr reference operator()(size_type i, size_type j);
+    ATOMIC_NODISCARD constexpr const_reference operator()(size_type i, size_type j) const;
 
     ATOMIC_NODISCARD constexpr auto order() const noexcept;
     ATOMIC_NODISCARD constexpr auto engine() const noexcept;
@@ -237,7 +237,7 @@ namespace linalg {
   void matrix<ENG>::print() const noexcept
   {
     size_type index = 0;
-    switch (order()) {
+    switch (order()) {  
     case MatrixOrder::Row:
       for (size_type i = 0; i < rows(); ++i) {
         std::cout << "[ ";

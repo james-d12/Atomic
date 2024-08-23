@@ -42,12 +42,12 @@ namespace linalg {
 
     explicit dynamic_vector_engine(size_type num, const_reference val = type());
     explicit dynamic_vector_engine(const storage_type &data);
-    dynamic_vector_engine(const std::initializer_list<type> data);
+    dynamic_vector_engine(std::initializer_list<type> data);
     dynamic_vector_engine &operator=(const storage_type &data);
-    dynamic_vector_engine &operator=(const std::initializer_list<type> data);
+    dynamic_vector_engine &operator=(std::initializer_list<type> data);
 
-    ATOMIC_NODISCARD reference operator[](const size_type index) noexcept;
-    ATOMIC_NODISCARD const_reference operator[](const size_type index) const noexcept;
+    ATOMIC_NODISCARD reference operator[](size_type index) noexcept;
+    ATOMIC_NODISCARD const_reference operator[](size_type index) const noexcept;
 
     auto begin() noexcept;
     auto begin() const noexcept;

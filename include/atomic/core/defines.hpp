@@ -49,7 +49,7 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 #endif
 
 #if defined(ATOMIC_OS_WINDOWS)
-#include <float.h>
+#include <cfloat>
 static constexpr auto ATOMIC_FLT_EPSILON = FLT_EPSILON;
 static constexpr auto ATOMIC_DBL_EPSILON = DBL_EPSILON;
 static constexpr auto ATOMIC_LDBL_EPSILON = LDBL_EPSILON;

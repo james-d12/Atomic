@@ -30,8 +30,8 @@ namespace container {
 
     dynamic_stack();
 
-    reference operator[](const size_type index) noexcept;
-    const_reference operator[](const size_type index) const noexcept;
+    reference operator[](size_type index) noexcept;
+    const_reference operator[](size_type index) const noexcept;
 
     auto begin() noexcept;
     auto begin() const noexcept;
@@ -46,8 +46,8 @@ namespace container {
     bool is_empty() const noexcept;
     auto size() const noexcept;
 
-    void resize(const size_type size);
-    void reserve(const size_type capacity);
+    void resize(size_type size);
+    void reserve(size_type capacity);
 
   private:
     size_type m_top = 0;

@@ -33,8 +33,8 @@ namespace container {
     constexpr fixed_stack() = default;
     constexpr explicit fixed_stack(const storage_type &data);
 
-    constexpr reference operator[](const size_type index) noexcept;
-    constexpr const_reference operator[](const size_type index) const noexcept;
+    constexpr reference operator[](size_type index) noexcept;
+    constexpr const_reference operator[](size_type index) const noexcept;
 
     constexpr auto begin() noexcept;
     constexpr auto begin() const noexcept;

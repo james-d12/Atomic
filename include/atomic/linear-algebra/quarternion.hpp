@@ -33,17 +33,17 @@ namespace linalg {
     constexpr quarternion &operator=(const quarternion &lhs) = default;
     ~quarternion() noexcept = default;
 
-    constexpr quarternion(const T x, const T y, const T z, const T w);
+    constexpr quarternion(T x, T y, T z, T w);
     constexpr explicit quarternion(const fvector4<T> &vec4);
-    constexpr quarternion(const std::initializer_list<type> data);
+    constexpr quarternion(std::initializer_list<type> data);
     constexpr quarternion &operator=(const fvector4<T> &vec4);
-    constexpr quarternion &operator=(const std::initializer_list<type> data);
+    constexpr quarternion &operator=(std::initializer_list<type> data);
 
-    ATOMIC_NODISCARD constexpr reference operator[](const size_type index);
-    ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const;
+    ATOMIC_NODISCARD constexpr reference operator[](size_type index);
+    ATOMIC_NODISCARD constexpr const_reference operator[](size_type index) const;
 
     constexpr void set(const fvector4<T> &vec4);
-    constexpr void set_rotation(const T rotation);
+    constexpr void set_rotation(T rotation);
 
     ATOMIC_NODISCARD constexpr auto x() const;
     ATOMIC_NODISCARD constexpr auto y() const;
