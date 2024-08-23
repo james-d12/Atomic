@@ -91,3 +91,29 @@ jobs:
         with:
           name: Atomic-Coverage-Report
           path: ${{runner.workspace}}/Atomic/coverage/
+          
+  cppcheck-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: sudo apt-get install cppcheck
+
+      - name: Run CppCheck
+        working-directory: ${{runner.workspace}}/Atomic
+        shell: bash
+        run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
+
+  cppcheck-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: brew install cppcheck
+
+      - name: Run CppCheck
+        working-directory: ${{runner.workspace}}/Atomic
+        shell: bash
+        run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
