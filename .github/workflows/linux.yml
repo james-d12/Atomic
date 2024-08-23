@@ -12,6 +12,9 @@ jobs:
         mode: [ Debug, Release ]
     steps:
       - uses: actions/checkout@v4
+        
+      - name: Install Dependencies
+        run: sudo apt-get install g++ clang -y
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
