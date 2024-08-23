@@ -33,10 +33,10 @@ namespace geometry {
     ATOMIC_NODISCARD constexpr auto circumference() const noexcept;
     ATOMIC_NODISCARD constexpr auto diameter() const noexcept;
 
-    ATOMIC_NODISCARD constexpr auto arc_length(const double angle) const noexcept;
-    ATOMIC_NODISCARD constexpr auto chord_length(const double angle) const noexcept;
-    ATOMIC_NODISCARD constexpr auto segment_area(const double angle) const noexcept;
-    ATOMIC_NODISCARD constexpr auto segment_height(const double angle) const noexcept;
+    ATOMIC_NODISCARD constexpr auto arc_length(double angle) const noexcept;
+    ATOMIC_NODISCARD constexpr auto chord_length(double angle) const noexcept;
+    ATOMIC_NODISCARD constexpr auto segment_area(double angle) const noexcept;
+    ATOMIC_NODISCARD constexpr auto segment_height(double angle) const noexcept;
 
   public:
     linalg::fvector2<T> centre;

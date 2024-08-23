@@ -42,12 +42,12 @@ namespace linalg {
 
     constexpr fixed_vector_engine();
     constexpr explicit fixed_vector_engine(const storage_type &data);
-    constexpr fixed_vector_engine(const std::initializer_list<type> data);
+    constexpr fixed_vector_engine(std::initializer_list<type> data);
     constexpr fixed_vector_engine &operator=(const storage_type &data);
-    constexpr fixed_vector_engine &operator=(const std::initializer_list<type> data);
+    constexpr fixed_vector_engine &operator=(std::initializer_list<type> data);
 
-    ATOMIC_NODISCARD constexpr reference operator[](const size_type index) noexcept;
-    ATOMIC_NODISCARD constexpr const_reference operator[](const size_type index) const noexcept;
+    ATOMIC_NODISCARD constexpr reference operator[](size_type index) noexcept;
+    ATOMIC_NODISCARD constexpr const_reference operator[](size_type index) const noexcept;
 
     constexpr auto begin() noexcept;
     constexpr auto begin() const noexcept;

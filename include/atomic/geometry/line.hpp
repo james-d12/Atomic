@@ -37,7 +37,7 @@ namespace geometry {
     constexpr line &operator=(line &&lhs) noexcept = default;
     ~line() = default;
 
-    constexpr line(const T _gradient, T _intercept, const linalg::fvector<T, D> _direction);
+    constexpr line(T _gradient, T _intercept, linalg::fvector<T, D> _direction);
 
   public:
     T gradient = 0;
