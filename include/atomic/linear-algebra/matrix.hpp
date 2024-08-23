@@ -237,7 +237,7 @@ namespace linalg {
   void matrix<ENG>::print() const noexcept
   {
     size_type index = 0;
-    switch (order()) {  
+    switch (order()) { 
     case MatrixOrder::Row:
       for (size_type i = 0; i < rows(); ++i) {
         std::cout << "[ ";
