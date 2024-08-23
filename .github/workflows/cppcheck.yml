@@ -6,7 +6,7 @@ jobs:
   ubuntu-focal:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: sudo apt-get install cppcheck
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Install Dependencies
       run: sudo apt-get install cppcheck
@@ -33,7 +33,7 @@ jobs:
   macos-latest:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: brew install cppcheck

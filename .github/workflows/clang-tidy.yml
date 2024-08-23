@@ -6,7 +6,7 @@ jobs:
   ubuntu-focal:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: sudo apt install clang-tidy
@@ -27,7 +27,7 @@ jobs:
   ubuntu-bionic:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@4
 
     - name: Install Dependencies
       run: sudo apt install clang-tidy
