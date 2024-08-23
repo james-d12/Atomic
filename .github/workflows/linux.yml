@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: [ g++-13, g++-14, clang++-17, clang++-18 ]
+        compiler: [ g++-13, g++-14, clang++-14, clang++-15 ]
         standard: [ c++14, c++17, c++20, c++23 ]
         mode: [ Debug, Release ]
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: sudo apt-get install g++-13 g++-14 clang-17 clang-18
+        run: sudo apt-get install g++-13 g++-14 clang-14 clang-15
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
