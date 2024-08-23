@@ -34,7 +34,7 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic/build
       run: genhtml coverage.info --output-directory ../coverage/   
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: Atomic-Coverage-Report
         path: ${{runner.workspace}}/Atomic/coverage/

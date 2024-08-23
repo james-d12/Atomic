@@ -27,7 +27,7 @@ jobs:
   ubuntu-bionic:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@4
+    - uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: sudo apt install clang-tidy

@@ -8,8 +8,8 @@ jobs:
     strategy:
         matrix:
             compiler: [ g++-9, g++-10, clang++-9, clang++-10 ]
-            standard: [ c++14, c++17, c++2a ]
-            mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
+            standard: [ c++14, c++17, c++20, c++23 ]
+            mode: [ Debug, Release ]
     steps:
     - uses: actions/checkout@v4
 
@@ -28,30 +28,3 @@ jobs:
       working-directory: ${{runner.workspace}}/Atomic/build
       shell: bash
       run: ./Tests 
-    
-  ubuntu-bionic:
-    runs-on: ubuntu-18.04
-    strategy:
-        matrix:
-            compiler: [ g++-7, g++-8, clang++-7, clang++-8 ]
-            standard: [ c++14, c++17 ]
-            mode: [ Debug, Release, RelWithDebInfo, MinSizeRel ]
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Install Dependencies
-      run: sudo apt install g++-7 g++-8 clang-7 clang-8
-
-    - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
-
-    - name: Build 
-      shell: bash
-      working-directory: ${{runner.workspace}}/Atomic/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }} 
-      
-    - name: Run Tests
-      working-directory: ${{runner.workspace}}/Atomic/build
-      shell: bash
-      run: ./Tests
