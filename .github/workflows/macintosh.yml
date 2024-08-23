@@ -7,7 +7,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        compiler: [ c++, g++-9, g++-10 ]
+        compiler: [ c++, g++-13, g++-14 ]
         standard: [ c++14, c++17, c++20 ]
         mode: [ Debug, Release ]
     steps:
