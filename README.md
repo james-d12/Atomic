@@ -4,18 +4,15 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/linux.yml/badge.svg?raw=true" alt="Linux Workflow"/>
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/macintosh.yml/badge.svg?raw=true" alt="Macintosh Workflow"/>
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/windows.yml/badge.svg?raw=true" alt="Windows Workflow"/>  
-  <img src="https://img.shields.io/github/issues/james-d12/Atomic.svg" alt="Issues"/>
-  <img src="https://img.shields.io/github/license/james-d12/Atomic.svg" alt="Issues"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/build.yml/badge.svg?raw=true" alt="Build Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/check.yml/badge.svg?raw=true" alt="Check Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/coverage.yml/badge.svg?raw=true" alt="Code Coverage Workflow"/>
+  <img src="https://github.com/james-d12/Atomic/actions/workflows/documentation.yml/badge.svg?raw=true" alt="Documentation Workflow"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/cppcheck.yml/badge.svg?raw=true" alt="CppCheck Workflow"/>
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/check.yml/badge.svg?raw=true" alt="Check Workflow"/>
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/clang-format.yml/badge.svg?raw=true" alt="ClangFormat Workflow"/>
-  <img src="https://github.com/james-d12/Atomic/actions/workflows/clang-tidy.yml/badge.svg?raw=true" alt="ClangTidy Workflow"/>  
+  <img src="https://img.shields.io/github/issues/james-d12/Atomic.svg" alt="Issues"/>
+  <img src="https://img.shields.io/github/license/james-d12/Atomic.svg" alt="Issues"/>  
 </p>
 
 
