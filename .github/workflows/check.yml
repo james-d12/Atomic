@@ -1,6 +1,6 @@
 name: Checks
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   check-files:
