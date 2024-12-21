@@ -9,7 +9,6 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 #define ATOMIC_LINEAR_ALGEBRA_FORWARDER_HPP
 
 #include <cstdlib>
-#include "atomic/core/utility.hpp"
 #include "atomic/linear-algebra/matrix_order.hpp"
 
 namespace atomic {

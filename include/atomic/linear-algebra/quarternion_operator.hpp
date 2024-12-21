@@ -8,7 +8,6 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 #ifndef ATOMIC_LINEAR_ALGEBRA_QUARTERNION_OPERATOR_HPP
 #define ATOMIC_LINEAR_ALGEBRA_QUARTERNION_OPERATOR_HPP
 
-#include <algorithm>
 #include "atomic/core/utility.hpp"
 
 namespace atomic {

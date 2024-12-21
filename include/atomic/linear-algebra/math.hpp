@@ -21,12 +21,12 @@ namespace linalg {
     using type = decltype(lhs[0] * rhs[0]);
     type sum = 0;
     typename ENG1::size_type index = 0;
-    std::for_each(lhs.begin(), lhs.end(), [&](const auto &n) { sum += (n * rhs[index]); index++; });
+    std::for_each(lhs.begin(), lhs.end(), [&](const auto &n) { sum += (n * rhs[index]); ++index; });
     return sum;
   }
 
   template<class ENG1, class ENG2>
-  ATOMIC_NODISCARD constexpr auto dot_product(const vector<ENG1> &lhs, const vector<ENG2> &rhs, double angle)
+  ATOMIC_NODISCARD constexpr auto dot_product(const vector<ENG1> &lhs, const vector<ENG2> &rhs, const double angle)
   {
     atomic::detail::assertion(lhs.dimensions() == rhs.dimensions(), "Vector dimensions must be equal for dot product calculation.");
     return (lhs.length() * rhs.length() * std::cos(angle));
@@ -44,7 +44,7 @@ namespace linalg {
   }
 
   template<class ENG1, class ENG2>
-  ATOMIC_NODISCARD constexpr auto cross_product(const vector<ENG1> &lhs, const vector<ENG2> &rhs, double angle)
+  ATOMIC_NODISCARD constexpr auto cross_product(const vector<ENG1> &lhs, const vector<ENG2> &rhs, const double angle)
   {
     atomic::detail::assertion((lhs.dimensions() == 3 && rhs.dimensions() == 3), "Vectors must be 3 dimensional for cross product calculation.");
     auto scalar = lhs.length() * rhs.length() * std::sin(angle);
@@ -107,11 +107,11 @@ namespace linalg {
   {
     if (lhs.dimensions() == 2 && rhs.dimensions() == 2) {
       return (lhs[0] / rhs[0] == lhs[1] / rhs[1]);
-    } else if (lhs.dimensions() == 3 && rhs.dimensions() == 3) {
-      return (lhs[0] / rhs[0] == lhs[1] / rhs[1] == lhs[2] / rhs[2]);
-    } else {
-      return false;
     }
+    if (lhs.dimensions() == 3 && rhs.dimensions() == 3) {
+      return (lhs[0] / rhs[0] == lhs[1] / rhs[1] == lhs[2] / rhs[2]);
+    }
+    return false;
   }
 
   template<class ENG1, class ENG2, class ENG3>

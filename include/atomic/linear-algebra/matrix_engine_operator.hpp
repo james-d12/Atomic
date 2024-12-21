@@ -21,7 +21,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2, class ENG3>
-    inline void matrix_engine_addition_helper(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
+    void matrix_engine_addition_helper(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
     {
       using size_type = typename ENG3::size_type;
 
@@ -35,7 +35,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2>
-    inline void matrix_engine_subtraction_helper(const ENG1 &engine, ENG2 &src)
+    void matrix_engine_subtraction_helper(const ENG1 &engine, ENG2 &src)
     {
       using size_type = typename ENG1::size_type;
       size_type index = 0;
@@ -49,7 +49,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2, class ENG3>
-    inline void matrix_engine_multiplication_row(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
+    void matrix_engine_multiplication_row(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
     {
       using size_type = typename ENG1::size_type;
       using result_type = element_promotion_t<typename ENG1::type, typename ENG2::type>;
@@ -69,7 +69,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2, class ENG3>
-    inline void matrix_engine_multiplication_column(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
+    void matrix_engine_multiplication_column(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
     {
       using size_type = typename ENG1::size_type;
       using result_type = element_promotion_t<typename ENG1::type, typename ENG2::type>;
@@ -89,7 +89,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2, class ENG3>
-    inline void matrix_engine_multiplication(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
+    void matrix_engine_multiplication(const ENG1 &lhs, const ENG2 &rhs, ENG3 &src)
     {
       switch (src.order()) {
       case MatrixOrder::Row:
@@ -102,7 +102,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2>
-    inline auto matrix_engine_addition(const ENG1 &lhs, const ENG2 &rhs)
+    auto matrix_engine_addition(const ENG1 &lhs, const ENG2 &rhs)
     {
       auto src = matrix_engine_promotion(lhs, rhs);
       matrix_engine_addition_helper(lhs, rhs, src);
@@ -110,7 +110,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2>
-    inline auto matrix_engine_subtraction(const ENG1 &lhs, const ENG2 &rhs)
+    auto matrix_engine_subtraction(const ENG1 &lhs, const ENG2 &rhs)
     {
       auto src = matrix_engine_promotion(lhs, rhs);
       std::copy(lhs.cbegin(), lhs.cend(), src.begin());
@@ -119,7 +119,7 @@ namespace linalg {
     }
 
     template<class ENG1, class ENG2>
-    inline auto matrix_engine_multiplication(const ENG1 &lhs, const ENG2 &rhs)
+    auto matrix_engine_multiplication(const ENG1 &lhs, const ENG2 &rhs)
     {
       auto src = matrix_engine_promotion(lhs, rhs);
       matrix_engine_multiplication(lhs, rhs, src);

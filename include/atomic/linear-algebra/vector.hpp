@@ -10,7 +10,6 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 
 #include <algorithm>
 #include <cmath>
-#include <stdexcept>
 #include <type_traits>
 
 #include "atomic/linear-algebra/vector_engine_operator.hpp"
@@ -97,7 +96,7 @@ namespace linalg {
     ATOMIC_NODISCARD constexpr auto dimensions_capacity() const noexcept;
 
     void fill(const_reference n) noexcept;
-    void set(const vector<ENG> &v) noexcept;
+    void set(const vector &v) noexcept;
 
     constexpr void normalise() noexcept;
     ATOMIC_NODISCARD constexpr auto length() const noexcept;
@@ -335,7 +334,7 @@ namespace linalg {
   template<class ENG>
   constexpr auto vector<ENG>::length() const noexcept
   {
-    typename vector<ENG>::type sum(0);
+    type sum(0);
     std::for_each(cbegin(), cend(), [&](const auto &n) { sum += (n * n); });
     return std::sqrt(sum);
   }
@@ -343,7 +342,7 @@ namespace linalg {
   template<class ENG>
   constexpr auto vector<ENG>::length_squared() const noexcept
   {
-    typename vector<ENG>::type sum(0);
+    type sum(0);
     std::for_each(cbegin(), cend(), [&](const auto &n) { sum += (n * n); });
     return sum;
   }
@@ -351,7 +350,7 @@ namespace linalg {
   template<class ENG>
   constexpr auto vector<ENG>::normalised() const noexcept
   {
-    vector<ENG> vec;
+    vector vec;
     std::copy(cbegin(), cend(), vec.begin());
     vec.normalise();
     return vec;
