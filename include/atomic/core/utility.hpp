@@ -12,37 +12,35 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 #include <cstddef>
 #include <iostream>
 
-#include "atomic/core/logging.hpp"
-
 namespace atomic {
 namespace detail {
 
   template<typename T>
-  static inline auto out_of_bounds(const T index, const size_t upper_bound)
+  static auto out_of_bounds(const T index, const size_t upper_bound)
   {
     return static_cast<bool>(index > upper_bound || index < 0);
   }
 
   template<typename T1, typename T2>
-  static inline auto are_same(T1 num1, T2 num2)
+  static auto are_same(T1 num1, T2 num2)
   {
     return (num1 - num2) <= 0;
   }
 
   template<>
-  inline auto are_same<float, float>(float num1, float num2)
+  inline auto are_same<float, float>(const float num1, const float num2)
   {
     return fabsf(num1 - num2) < ATOMIC_FLT_EPSILON;
   }
 
   template<>
-  inline auto are_same<double, double>(double num1, double num2)
+  inline auto are_same<double, double>(const double num1, const double num2)
   {
     return fabs(num1 - num2) < static_cast<double>(ATOMIC_FLT_EPSILON);
   }
 
   template<>
-  inline auto are_same<long double, long double>(long double num1, long double num2)
+  inline auto are_same<long double, long double>(const long double num1, const long double num2)
   {
     return fabsl(num1 - num2) < static_cast<long double>(ATOMIC_FLT_EPSILON);
   }
