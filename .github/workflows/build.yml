@@ -54,14 +54,15 @@ jobs:
         working-directory: ${{runner.workspace}}/Atomic/build
         shell: bash
         run: ./Tests 
-      
-  macos-latest:
-    runs-on: macos-latest
+
+  macos:
     strategy:
       matrix:
         compiler: [ c++, g++-13, g++-14 ]
         standard: [ c++14, c++17, c++20 ]
         mode: [ Debug, Release ]
+        os: [ macos-15, macos-14 ]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
@@ -77,14 +78,14 @@ jobs:
         working-directory: ${{runner.workspace}}/Atomic/build
         shell: bash
         run: ./Tests
-        
+
   windows:
     strategy:
       matrix:
         compiler: [ clang, gcc, msvc-14.0, msvc-14.2 ]
         standard: [ c++14, c++17, c++20, c++23 ]
         mode: [ Debug, Release ]
-        os: [ windows-latest, windows-2019 ]
+        os: [ windows-2025, windows-2022 ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
