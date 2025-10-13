@@ -92,7 +92,7 @@ jobs:
       - name: Generate Coverage Files
         shell: bash
         working-directory: ${{runner.workspace}}/Atomic/build
-        run: lcov --capture --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
+        run: lcov --capture --ignore-errors mismatch --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
 
       - name: Generate HTML Reports
         shell: bash
