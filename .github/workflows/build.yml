@@ -4,108 +4,95 @@ permissions:
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  ubuntu-latest:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        compiler: [ g++-11, g++-12, clang++-14, clang++-15 ]
-        standard: [ c++14, c++17, c++20 ]
-        mode: [ Debug, Release ]
+  ubuntu-noble:
+    name: "Ubuntu Noble"
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: sudo apt-get install g++-11 g++-12 clang-14 clang-15 -y
+      - name: "Make Script Executable"
+        run: chmod +x .github/scripts/build-matrix.sh
 
-      - name: Create Build Environment
-        run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: apt-cache-ubuntu-noble-latest
 
-      - name: Build
-        shell: bash
-        working-directory: ${{runner.workspace}}/Atomic/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+      - run: sudo apt-get install -y g++-11 g++-12 clang-14 clang-15
+      - name: Run Build Matrix
+        run: |
+          COMPILERS="g++-11 g++-12 clang++-14 clang++-15" \
+          STANDARDS="c++14 c++17 c++20" \
+          MODES="Debug Release" \
+          .github/scripts/build-matrix.sh
 
-      - name: Run Tests
-        working-directory: ${{runner.workspace}}/Atomic/build
-        shell: bash
-        run: ./Tests
-  
   ubuntu-jammy:
+    name: "Ubuntu Jammy"
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        compiler: [ g++-9, g++-10, clang++-11, clang++-12, clang++-13, clang++-14, clang++-15 ]
-        standard: [ c++14, c++17, c++2a ]
-        mode: [ Debug, Release ]
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: sudo apt-get install g++-9 g++-10 clang-11 clang-12 clang-13 clang-14 clang-15 -y
+      - name: "Make Script Executable"
+        run: chmod +x .github/scripts/build-matrix.sh
 
-      - name: Create Build Environment
-        run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: apt-cache-ubuntu-jammy-latest
 
-      - name: Build
-        shell: bash
-        working-directory: ${{runner.workspace}}/Atomic/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
-
-      - name: Run Tests
-        working-directory: ${{runner.workspace}}/Atomic/build
-        shell: bash
-        run: ./Tests 
+      - run: sudo apt-get install -y g++-10 clang-11 clang-12 clang-13 clang-14 clang-15
+      - name: Run Build Matrix
+        run: |
+          COMPILERS="g++-10 clang++-11 clang++-12 clang++-13 clang++-14 clang++-15" \
+          STANDARDS="c++14 c++17 c++20" \
+          MODES="Debug Release" \
+          .github/scripts/build-matrix.sh
 
   macos:
-    strategy:
-      matrix:
-        compiler: [ c++, g++-13, g++-14 ]
-        standard: [ c++14, c++17, c++20 ]
-        mode: [ Debug, Release ]
-        os: [ macos-15, macos-14 ]
-    runs-on: ${{ matrix.os }}
+    name: "MacOS 15"
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create Build Environment
-        run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
+      - name: "Make Script Executable"
+        run: chmod +x .github/scripts/build-matrix.sh
 
-      - name: Build
-        shell: bash
-        working-directory: ${{runner.workspace}}/Atomic/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+      - name: Run Build Matrix
+        run: |
+          COMPILERS="c++ g++-13 g++-14" \
+          STANDARDS="c++14 c++17 c++20" \
+          MODES="Debug Release" \
+          .github/scripts/build-matrix.sh
 
-      - name: Run Tests
-        working-directory: ${{runner.workspace}}/Atomic/build
-        shell: bash
-        run: ./Tests
-
-  windows:
-    strategy:
-      matrix:
-        compiler: [ clang, gcc, msvc-14.0, msvc-14.2 ]
-        standard: [ c++14, c++17, c++20, c++23 ]
-        mode: [ Debug, Release ]
-        os: [ windows-2025, windows-2022 ]
-    runs-on: ${{ matrix.os }}
+  windows-2022:
+    name: "Windows 2022"
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create Build Environment
-        run: cmake -E make_directory ${{runner.workspace}}\build
+      - name: Run Build Matrix
+        shell: pwsh
+        run: |
+          $env:COMPILERS = "clang gcc msvc-14.0 msvc-14.2"
+          $env:STANDARDS = "c++14 c++17 c++20 c++23"
+          $env:MODES = "Debug Release"
+          .github\scripts\build-matrix.ps1
 
-      - name: Build
-        shell: bash
-        working-directory: ${{runner.workspace}}\build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DCMAKE_CXX_FLAGS=-std=${{ matrix.standard }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler}}; cmake --build . --config ${{ matrix.mode }}
+  windows-2025:
+    name: "Windows 2025"
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Run Tests
-        working-directory: ${{runner.workspace}}\build\${{ matrix.mode }}
-        run: ./Tests.exe
+      - name: Run Build Matrix
+        shell: pwsh
+        run: |
+          $env:COMPILERS = "clang gcc msvc-14.0 msvc-14.2"
+          $env:STANDARDS = "c++14 c++17 c++20 c++23"
+          $env:MODES = "Debug Release"
+          .github\scripts\build-matrix.ps1
