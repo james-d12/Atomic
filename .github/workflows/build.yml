@@ -29,8 +29,8 @@ jobs:
         shell: bash
         run: ./Tests
   
-  ubuntu-focal:
-    runs-on: ubuntu-20.04
+  ubuntu-jammy:
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         compiler: [ g++-9, g++-10, clang++-9, clang++-10 ]
