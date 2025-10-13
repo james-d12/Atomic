@@ -2,7 +2,7 @@
 This file is part of Atomic which is released under the
 GNU LESSER GENERAL PUBLIC LICENSE Version 3.
 
-See file LICENSE or go to 
+See file LICENSE or go to
 https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 ***********************************************************************/
 #include <atomic.hpp>
@@ -10,14 +10,14 @@ https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 
 TEST_CASE("Fixed Sized Vector Dot Product", "[fixed-vector][dotproduct]")
 {
-  const atomic::linalg::fvector<int, 3> v1 { 1, 2, 3 };
-  const atomic::linalg::fvector<int, 3> v2 { 15, 25, 65 };
+  const atomic::linalg::fvector<int, 3> v1{ 1, 2, 3 };
+  const atomic::linalg::fvector<int, 3> v2{ 15, 25, 65 };
 
-  const atomic::linalg::fvector<float, 3> v3 { 10.5F, 100.5F, 25.5F };
-  const atomic::linalg::fvector<float, 3> v4 { 75.6F, 12.54F, 10.54F };
+  const atomic::linalg::fvector<float, 3> v3{ 10.5F, 100.5F, 25.5F };
+  const atomic::linalg::fvector<float, 3> v4{ 75.6F, 12.54F, 10.54F };
 
-  const atomic::linalg::fvector<double, 3> v5 { -10, -20, -30 };
-  const atomic::linalg::fvector<double, 3> v6 { 15.6, 10, 0 };
+  const atomic::linalg::fvector<double, 3> v5{ -10, -20, -30 };
+  const atomic::linalg::fvector<double, 3> v6{ 15.6, 10, 0 };
 
   CHECK(atomic::linalg::dot_product(v1, v2) == 260);
   CHECK(atomic::linalg::dot_product(v2, v1) == 260);
@@ -27,12 +27,12 @@ TEST_CASE("Fixed Sized Vector Dot Product", "[fixed-vector][dotproduct]")
   CHECK(atomic::linalg::dot_product(v6, v5) == -356);
 }
 
-TEST_CASE("Fixed Sized Vector Cross Product - Integer", "[fixed-vector][crossproduct][cumulative]") 
+TEST_CASE("Fixed Sized Vector Cross Product - Integer", "[fixed-vector][crossproduct][cumulative]")
 {
-  const atomic::linalg::fvector<int, 3> v1 { 1, 2, 3 };
-  const atomic::linalg::fvector<int, 3> v2 { 15, 25, 65 };
-  const atomic::linalg::fvector<int, 3> exp1 { 55, -20, -5 };
-  const atomic::linalg::fvector<int, 3> exp2 { -55, 20, 5 };
+  const atomic::linalg::fvector<int, 3> v1{ 1, 2, 3 };
+  const atomic::linalg::fvector<int, 3> v2{ 15, 25, 65 };
+  const atomic::linalg::fvector<int, 3> exp1{ 55, -20, -5 };
+  const atomic::linalg::fvector<int, 3> exp2{ -55, 20, 5 };
 
   auto res1 = cross_product(v1, v2);
   auto res2 = cross_product(v2, v1);
