@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   check-files:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:    
       - uses: actions/checkout@v4
         
@@ -21,7 +21,7 @@ jobs:
         run: python ./tools/check_header_guards.py
         
   clang-format:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -36,7 +36,7 @@ jobs:
         run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file
   
   clang-tidy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -57,7 +57,7 @@ jobs:
         run: run-clang-tidy -header-filter='.*' -p build/ -quiet
         
   coverage:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
