@@ -2,7 +2,7 @@
 This file is part of Atomic which is released under the
 GNU LESSER GENERAL PUBLIC LICENSE Version 3.
 
-See file LICENSE or go to 
+See file LICENSE or go to
 https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 ***********************************************************************/
 #ifndef ATOMIC_GEOMETRY_TRIANGLE_HPP
@@ -30,45 +30,45 @@ namespace geometry {
 
     void translate(const linalg::fvector2<T> &translation);
 
-    //returns the number of faces.
+    // returns the number of faces.
     ATOMIC_NODISCARD constexpr auto faces() const noexcept;
-    //returns the number of vertices.
+    // returns the number of vertices.
     ATOMIC_NODISCARD constexpr auto vertices() const noexcept;
-    //returns the number of edges.
+    // returns the number of edges.
     ATOMIC_NODISCARD constexpr auto edges() const noexcept;
 
-    //returns the length of side a.
+    // returns the length of side a.
     ATOMIC_NODISCARD constexpr auto side_a() const noexcept;
-    //returns the length of side b.
+    // returns the length of side b.
     ATOMIC_NODISCARD constexpr auto side_b() const noexcept;
-    //returns the length of side c.
+    // returns the length of side c.
     ATOMIC_NODISCARD constexpr auto side_c() const noexcept;
 
-    //returns the angle of a.
+    // returns the angle of a.
     ATOMIC_NODISCARD constexpr auto angle_a() const noexcept;
-    //returns the angle of b.
+    // returns the angle of b.
     ATOMIC_NODISCARD constexpr auto angle_b() const noexcept;
-    //returns the angle of c.
+    // returns the angle of c.
     ATOMIC_NODISCARD constexpr auto angle_c() const noexcept;
 
-    //returns the height of a.
+    // returns the height of a.
     ATOMIC_NODISCARD constexpr auto height_a() const noexcept;
-    //returns the height of b.
+    // returns the height of b.
     ATOMIC_NODISCARD constexpr auto height_b() const noexcept;
-    //returns the height of c.
+    // returns the height of c.
     ATOMIC_NODISCARD constexpr auto height_c() const noexcept;
 
-    //returns the area of the triangle.
+    // returns the area of the triangle.
     ATOMIC_NODISCARD constexpr auto area() const noexcept;
-    //returns the perimeter of the triangle.
+    // returns the perimeter of the triangle.
     ATOMIC_NODISCARD constexpr auto perimeter() const noexcept;
-    //returns the semi-perimeter of the triangle.
+    // returns the semi-perimeter of the triangle.
     ATOMIC_NODISCARD constexpr auto semiperimeter() const noexcept;
-    //returns the inradius of the triangle.
+    // returns the inradius of the triangle.
     ATOMIC_NODISCARD constexpr auto inradius() const noexcept;
-    //returns the circumradius of the triangle.
+    // returns the circumradius of the triangle.
     ATOMIC_NODISCARD constexpr auto circumradius() const noexcept;
-    //returns the centroid of the triangle.
+    // returns the centroid of the triangle.
     ATOMIC_NODISCARD constexpr auto centroid() const noexcept;
 
   public:
