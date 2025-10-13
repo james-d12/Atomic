@@ -9,8 +9,9 @@ on:
     branches: [ main ]
 
 jobs:
-  ubuntu-latest:
-    runs-on: ubuntu-latest
+  ubuntu-noble:
+    name: "Ubuntu Noble"
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +27,7 @@ jobs:
           .github/scripts/build-matrix.sh
 
   ubuntu-jammy:
+    name: "Ubuntu Jammy"
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -33,15 +35,16 @@ jobs:
       - name: "Make Script Executable"
         run: chmod +x .github/scripts/build-matrix.sh
 
-      - run: sudo apt-get install -y g++-9 g++-10 clang-11 clang-12 clang-13 clang-14 clang-15
+      - run: sudo apt-get install -y g++-10 clang-11 clang-12 clang-13 clang-14 clang-15
       - name: Run Build Matrix
         run: |
-          COMPILERS="g++-9 g++-10 clang++-11 clang++-12 clang++-13 clang++-14 clang++-15" \
+          COMPILERS="g++-10 clang++-11 clang++-12 clang++-13 clang++-14 clang++-15" \
           STANDARDS="c++14 c++17 c++20" \
           MODES="Debug Release" \
           .github/scripts/build-matrix.sh
 
   macos:
+    name: "MacOS 15"
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -56,8 +59,23 @@ jobs:
           MODES="Debug Release" \
           .github/scripts/build-matrix.sh
 
-  windows:
+  windows-2022:
+    name: "Windows 2022"
     runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Build Matrix
+        shell: pwsh
+        run: |
+          $env:COMPILERS = "clang gcc msvc-14.0 msvc-14.2"
+          $env:STANDARDS = "c++14 c++17 c++20 c++23"
+          $env:MODES = "Debug Release"
+          .github\scripts\build-matrix.ps1
+
+  windows-2025:
+    name: "Windows 2025"
+    runs-on: windows-2025
     steps:
       - uses: actions/checkout@v4
 
