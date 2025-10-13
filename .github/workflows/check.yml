@@ -1,9 +1,18 @@
 name: Checks
+permissions:
+  contents: read
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   check-files:
+    name: "Check Files for Licenses and Header Guards"
     runs-on: ubuntu-latest
     steps:    
       - uses: actions/checkout@v4
@@ -21,12 +30,13 @@ jobs:
         run: python ./tools/check_header_guards.py
         
   clang-format:
+    name: "Run Clang-Format"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: sudo apt install python clang-format
+        run: sudo apt-get install clang-format
 
       - name: Download Run-Clang-Format
         run: git clone https://github.com/Sarcasm/run-clang-format.git
@@ -36,12 +46,13 @@ jobs:
         run: python run-clang-format/run-clang-format.py -r --extensions h,hpp ./include/ --style=file
   
   clang-tidy:
+    name: "Run Clang-Tidy"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: sudo apt install clang-tidy
+        run: sudo apt-get install clang-tidy
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/Atomic/build
@@ -57,6 +68,7 @@ jobs:
         run: run-clang-tidy -header-filter='.*' -p build/ -quiet
         
   coverage:
+    name: "Generate Coverage Report"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -80,7 +92,7 @@ jobs:
       - name: Generate Coverage Files
         shell: bash
         working-directory: ${{runner.workspace}}/Atomic/build
-        run: lcov --capture --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
+        run: lcov --capture --ignore-errors mismatch --directory ./CMakeFiles/Tests.dir/tests/unit/ --output-file coverage.info
 
       - name: Generate HTML Reports
         shell: bash
@@ -93,6 +105,7 @@ jobs:
           path: ${{runner.workspace}}/Atomic/coverage/
           
   cppcheck-ubuntu:
+    name: "Run CppCheck on Linux"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -106,6 +119,7 @@ jobs:
         run: find ./include -name '*.hpp' | xargs cppcheck --enable=all -q --force -Iinclude/
 
   cppcheck-macos:
+    name: "Run CppCheck on MacOS"
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

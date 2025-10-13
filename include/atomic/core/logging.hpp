@@ -2,7 +2,7 @@
 This file is part of Atomic which is released under the
 GNU LESSER GENERAL PUBLIC LICENSE Version 3.
 
-See file LICENSE or go to 
+See file LICENSE or go to
 https://www.gnu.org/licenses/lgpl-3.0.en.html for full license details.
 ***********************************************************************/
 #ifndef ATOMIC_CORE_LOGGING_HPP
@@ -63,7 +63,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void log(Args &&... args)
+  static inline void log(Args &&...args)
   {
     std::cout << "[LOG]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -72,7 +72,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void trace(Args &&... args)
+  static inline void trace(Args &&...args)
   {
     std::cout << TERM_WHITE << "[TRACE]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -81,7 +81,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void info(Args &&... args)
+  static inline void info(Args &&...args)
   {
     std::cout << TERM_GREEN << "[INFO]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -90,7 +90,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void warn(Args &&... args)
+  static inline void warn(Args &&...args)
   {
     std::cout << TERM_YELLOW << "[WARNING]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args)), 0)... };
@@ -99,7 +99,7 @@ namespace detail {
   }
 
   template<typename... Args>
-  static inline void error(Args &&... args)
+  static inline void error(Args &&...args)
   {
     std::cout << TERM_RED << "[ERROR]: ";
     int dummy[] = { 0, ((void)log_argument(std::forward<Args>(args), std::cerr), 0)... };

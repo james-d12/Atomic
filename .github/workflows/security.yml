@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [ stable, dev ]
+    branches: [ main ]
   schedule:
     - cron: '22 16 * * 0'
 
