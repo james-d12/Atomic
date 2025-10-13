@@ -18,6 +18,11 @@ jobs:
       - name: "Make Script Executable"
         run: chmod +x .github/scripts/build-matrix.sh
 
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: apt-cache-${{ runner.os }}-latest
+
       - run: sudo apt-get install -y g++-11 g++-12 clang-14 clang-15
       - name: Run Build Matrix
         run: |
@@ -34,6 +39,11 @@ jobs:
 
       - name: "Make Script Executable"
         run: chmod +x .github/scripts/build-matrix.sh
+
+      - uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: apt-cache-${{ runner.os }}-latest
 
       - run: sudo apt-get install -y g++-10 clang-11 clang-12 clang-13 clang-14 clang-15
       - name: Run Build Matrix
